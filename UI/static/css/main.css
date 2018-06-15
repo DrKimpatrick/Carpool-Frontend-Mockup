@@ -42,6 +42,7 @@ p{
     margin-right: 30px;
 }
 
+
 .nav_wrapper ul{
     list-style-type: none;
     display: flex;
@@ -62,7 +63,40 @@ p{
     color: white;
 }
 
+.toggle-button{
+    margin-right: 30px;
+    padding-right: 30px;
+    cursor: pointer;
+}
 
+.toggle-button span{
+    display: block;
+    background-color: silver;
+    width: 30px;
+    height:5px;
+    margin: 3px;
+
+}
+
+/*#### TOGGLE THE HUBER GER MENU**/
+@media (min-width: 768px) {
+    .toggle-button{
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    /* change the margin and padding of
+    of the header from left
+     */
+    .nav_wrapper header{
+        margin-left: 10px;
+    }
+    .nav_wrapper nav{
+        display: none;
+    }
+    .toggle-button
+}
 /* ################ ###############################333 */
 
 /* *********    Login form area ***********/
@@ -81,41 +115,57 @@ p{
 
 .form-centered{
     margin:auto;
-    width:100%;
     display: flex;
     flex-direction: column;
 }
 
 .form_wrapper header{ /* centering all the content */
     margin: auto;
-    width:50%;
+    width:100%;
     padding: 5px;
     color: whitesmoke;
 }
 
 .form_wrapper form{ /* centering all the content */
     margin: auto;
-    width:50%;
+    width:100%;
     padding: 5px;
 
 }
 
 .form_wrapper footer{  /* centering all the content */
     margin: auto;
-    width:50%;
+    width:100%;
     padding: 5px;
     color: whitesmoke;
 }
 
 /*** FORM ALONE */
 
-
-
 form.sign_in_form{
     display: flex;
     flex-direction:column;
 
 }
+
+/******############ AT A MIN-WIDTH:768PX ***********/
+@media (min-width: 768px) {
+    .form_wrapper header{
+        //width:30%;
+    }
+
+    form .sign_in_form{
+        width:30%;
+    }
+    .form_wrapper footer{
+        //width:30%;
+    }
+}
+
+
+
+
+
 /***************** default input='' styles *********************************/
 input{
     padding: 5px;
@@ -128,7 +178,7 @@ input[type='text'], input[type='password']{
     border-radius: 4px;
     color: #34495e;
     font-style: normal;
-    font-size: 18px;
+    font-size: 15px;
 
 
 }
@@ -138,8 +188,12 @@ input[type='submit']{
     color: white;
     border:1px solid #2ecc71;
     border-radius: 4px;
+    cursor: pointer;
 
 }
+/********* END OF FORM DEFAULT STYLES**************************/
+
+
 
 /* ######################## ABOUT SECTION PAGE **********************/
 .about_wrapper{
@@ -168,9 +222,13 @@ input[type='submit']{
     padding-bottom: 20px;
 }
 
-/* ## ABOUT A MAX-WIDTH 768 PX  #########*/
+/* ## ABOUT A MAX-WIDTH 768 PX  ##############################################################*/
 @media (max-width: 768px ) {
     /* DISPLAY THE ABOUT ALL THE ABOUT CONTENT IN A COLUMN */
+
+    .about_header{
+        padding: 20px 40px;
+    }
     .about_content{
         display: flex;
         flex-direction: column;
@@ -192,7 +250,7 @@ input[type='submit']{
 
 }
 
-/**************** TOP FOOTER ************************************/
+/***** TOP FOOTER **********/
 .top_footer_section{
     display: flex;
     flex-direction:row;
@@ -220,12 +278,17 @@ input[type='submit']{
     .top_footer_section{
         display: flex;
         flex-direction:column;
-        width:100%;
+        padding: 30px 50px;
+
     }
 
     .footer_column{
-        padding:20px 10px;
+        margin-bottom: 20px;
         width:100%;
+
+    }
+    .bottom_footer_section{
+        padding: 30px 30px;
     }
 }
 
