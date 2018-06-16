@@ -100,7 +100,9 @@ p{
 /* ################ ###############################333 */
 
 /* *********    Login form area ***********/
-
+.content_area{
+    margin-top: 88px;
+}
 .form_wrapper{
     background-image: url("../images/carpool.jpg");
     background-repeat: no-repeat;
@@ -109,7 +111,6 @@ p{
     height: 460px;
     // background-attachment: fixed;
     text-align: center;
-    margin-top: 88px;
 
 }
 
@@ -292,6 +293,51 @@ input[type='submit']{
     }
 }
 
+
+/*############### ADMIN PANEL **############################*/
+
+/* align elements row wise **/
+.admin_wrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+nav.admin_sidebar{
+    background-color: #2ecc71;
+    height: 100%;
+}
+
+nav.admin_sidebar ul{
+    list-style-type: none;
+}
+
+nav.admin_sidebar ul li{
+    border-bottom: 1px solid silver;
+}
+
+nav.admin_sidebar ul a{
+    display: block;
+    text-decoration: none;
+    padding: 15px;
+    line-height: 35px;
+    background-color: dimgray;
+    color: #2c3e50;
+
+}
+
+nav.admin_sidebar ul a:hover{
+    background-color: silver;
+    color: black;
+}
+
+/*####### TOGGLE ICON ****/
+.toggle-sidebar-button span{
+    display: block;
+    background-color: black;
+    width: 30px;
+    height:5px;
+    margin: 3px;
+}
 
 
 
