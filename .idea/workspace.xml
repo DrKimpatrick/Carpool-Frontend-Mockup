@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90d6a05a-1c63-49b5-9691-d6b02a0bac41" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UI/edit_user_profile.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UI/home_page.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/index.html" afterPath="$PROJECT_DIR$/UI/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/profile_page.html" afterPath="$PROJECT_DIR$/UI/profile_page.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/edit_user_profile.html" afterPath="$PROJECT_DIR$/UI/edit_user_profile.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/static/css/main.css" afterPath="$PROJECT_DIR$/UI/static/css/main.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,14 +15,14 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.820059">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
           <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/UI/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="110">
-                  <caret line="25" column="14" lean-forward="true" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
+                <state relative-caret-position="242">
+                  <caret line="31" column="30" lean-forward="false" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
                   <folding>
                     <element signature="e#3904#3910#0" expanded="true" />
                   </folding>
@@ -36,7 +33,7 @@
           <file leaf-file-name="signup.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/UI/signup.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="286">
+                <state relative-caret-position="22">
                   <caret line="13" column="50" lean-forward="false" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
                   <folding>
                     <element signature="e#4141#4147#0" expanded="true" />
@@ -45,11 +42,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
+          <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/UI/static/css/main.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2607">
-                  <caret line="424" column="18" lean-forward="true" selection-start-line="424" selection-start-column="18" selection-end-line="424" selection-end-column="18" />
+                <state relative-caret-position="147">
+                  <caret line="484" column="21" lean-forward="true" selection-start-line="484" selection-start-column="21" selection-end-line="484" selection-end-column="21" />
                   <folding />
                 </state>
               </provider>
@@ -58,18 +55,18 @@
           <file leaf-file-name="edit_user_profile.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/UI/edit_user_profile.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="198">
-                  <caret line="13" column="50" lean-forward="false" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
+                <state relative-caret-position="-66">
+                  <caret line="36" column="39" lean-forward="false" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="profile_page.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="profile_page.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/UI/profile_page.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="88">
-                  <caret line="13" column="50" lean-forward="false" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
+                <state relative-caret-position="286">
+                  <caret line="17" column="46" lean-forward="false" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
                   <folding />
                 </state>
               </provider>
@@ -78,40 +75,12 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-          <file leaf-file-name="profile_page.html" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/UI/profile_page.html">
+        <leaf>
+          <file leaf-file-name="edit_user_profile.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/UI/edit_user_profile.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="154">
-                  <caret line="50" column="20" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="211" selection-end-column="7" />
-                  <folding>
-                    <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="e#1687#1693#0" expanded="true" />
-                    <element signature="e#1777#1783#0" expanded="true" />
-                    <element signature="e#1867#1873#0" expanded="true" />
-                    <element signature="n#style#0;n#hr#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                    <element signature="n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="home_page.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/UI/home_page.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="88">
-                  <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/.gitignore">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+                <state relative-caret-position="77">
+                  <caret line="26" column="14" lean-forward="true" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
                   <folding />
                 </state>
               </provider>
@@ -137,6 +106,7 @@
       <find>inpu</find>
       <find>form_wrapper</find>
       <find>span</find>
+      <find>form_wra</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -152,10 +122,10 @@
         <option value="$PROJECT_DIR$/UI/admin_panel.html" />
         <option value="$PROJECT_DIR$/UI/.gitignore" />
         <option value="$PROJECT_DIR$/UI/home_page.html" />
-        <option value="$PROJECT_DIR$/UI/static/css/main.css" />
         <option value="$PROJECT_DIR$/UI/index.html" />
-        <option value="$PROJECT_DIR$/UI/edit_user_profile.html" />
         <option value="$PROJECT_DIR$/UI/profile_page.html" />
+        <option value="$PROJECT_DIR$/UI/edit_user_profile.html" />
+        <option value="$PROJECT_DIR$/UI/static/css/main.css" />
       </list>
     </option>
   </component>
@@ -710,20 +680,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI/signup.html">
+    <entry file="file://$PROJECT_DIR$/UI/profile_page.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
-          <caret line="13" column="50" lean-forward="false" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
-          <folding>
-            <element signature="e#4141#4147#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+          <caret line="17" column="46" lean-forward="false" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
           <folding />
         </state>
       </provider>
@@ -736,36 +696,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI/static/css/main.css">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2607">
-          <caret line="424" column="18" lean-forward="true" selection-start-line="424" selection-start-column="18" selection-end-line="424" selection-end-column="18" />
+        <state relative-caret-position="0">
+          <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/UI/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="25" column="14" lean-forward="true" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
+        <state relative-caret-position="242">
+          <caret line="31" column="30" lean-forward="false" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
           <folding>
             <element signature="e#3904#3910#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI/edit_user_profile.html">
+    <entry file="file://$PROJECT_DIR$/UI/signup.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
+        <state relative-caret-position="22">
           <caret line="13" column="50" lean-forward="false" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
+          <folding>
+            <element signature="e#4141#4147#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI/static/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="484" column="21" lean-forward="true" selection-start-line="484" selection-start-column="21" selection-end-line="484" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI/profile_page.html">
+    <entry file="file://$PROJECT_DIR$/UI/edit_user_profile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="13" column="50" lean-forward="false" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
+        <state relative-caret-position="77">
+          <caret line="26" column="14" lean-forward="true" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
           <folding />
         </state>
       </provider>
