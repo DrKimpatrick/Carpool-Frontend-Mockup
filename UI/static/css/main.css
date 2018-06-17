@@ -341,12 +341,137 @@ nav.admin_sidebar ul a:hover{
 
 
 
+/* ################### PROFILE PAGE ******************************************/
+
+/* wraps all the content on the profile page | profile_top and profile_bottom*/
+.profile_wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 50px 10%;
+    width: 80%;
+}
+
+/* wraps | profile_pic and user_summary_info*/
+.profile_top{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+}
+
+/* wraps the user profile_picture */
+.profile_pic{
+    flex-basis: 10%;
+}
+
+/* summarises the user info | username_edit_profile, rides_count, user_bio*/
+.user_summary_info{
+    flex-basis:80%;
+    padding: 15px;
+}
+
+/**** wraps username and edit button */
+.username_edit_profile{
+    display: flex;
+    padding: 5px;
+    margin: 5px;
+}
+
+.username_edit_profile h2{
+    font-size: 32px;
+    margin-right: 15px;
+
+}
+
+.username_edit_profile button{
+    font-size: 14px;
+    padding: 2px 10px;
+    text-align: center;
+    border:1px solid silver;
+    border-radius: 4px;
+    width: 150px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+
+/* rides summary | rides_taken, rides_offered, friends*/
+.rides_count{
+    padding: 5px;
+    margin: 5px;
+}
+
+
+.rides_count ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.rides_count ul li{
+    padding: 5px;
+}
+
+.rides_count span{
+    font-weight: bolder;
+}
+
+.rides_count ul li a{
+    text-decoration: none;
+    color: #000;
+}
+
+
+/* profile_bottom | list of rides offered and given */
+.profile_bottom{
+    width:100%;
+    color: silver;
+}
+
+.profile_bottom:hover{
+    color: #dddddd;
+}
+
+.ride_template{
+    background-color: #2c3e50;
+    width:auto;
+    height: auto;
+    //border:1px solid #2c3e50;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 15px;
+    margin: 15px;
+}
+.ride_template header{
+    text-align: center;
+    padding: 5px;
+}
+.ride_template th{
+    font-weight: bolder;
+    font-size: large;
+}
 
 
 
 
 
 
+/*######## DEFAULT TABLE DESIGNS ************************/
+
+table {
+    border-collapse: collapse;
+}
+table, th, td {
+   //border: 1px solid black;
+
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+
+}
 
 
 
