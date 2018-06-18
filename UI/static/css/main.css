@@ -5,6 +5,7 @@
 
 body{
     font-family: 'Tahoma', Monaco, "Courier New", Courier, monospace;
+    background-color: #f5f5f5;
 
 }
 /** DEFAULT HEADING SIZES */
@@ -49,13 +50,14 @@ input textarea, select{
     margin: 5px;
 }
 
-input[type='text'], input[type='password'], input[type='number'], textarea, select{
+input[type='text'], input[type='password'], input[type='number'], input[type='date'], textarea, select{
     border:1px solid silver;
     border-radius: 4px;
     color: #34495e;
     font-style: normal;
     font-size: 15px;
     margin: 5px;
+    padding: 5px 0 5px 5px;
 
 
 }
@@ -66,8 +68,59 @@ input[type='submit']{
     border:1px solid #2ecc71;
     border-radius: 4px;
     cursor: pointer;
+    padding: 5px;
 
 }
+
+/* wraps the label and input */
+form .form-group{
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+}
+
+@media (max-width: 768px) {
+
+    form .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+.form-group label{
+    width:10%;
+    margin: 5px 5px 5px 0;
+}
+
+.form-group input, textarea, select{
+    width:90%;
+    margin: 5px 0;
+
+}
+
+/*** created to help in centering the content */
+.form-centered{
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/*** PAGE HEADER | COLORED GREEN (SUCCESS)*******/
+.page_header{
+    background-color: #2ecc71;
+    padding: 50px 100px;
+    color: white;
+}
+@media (max-width: 768px) {
+    .page_header{
+        padding:30px 50px;
+    }
+}
+
+/* centering form content */
+
+
 /********* END OF FORM DEFAULT STYLES**************************/
 
 
@@ -166,12 +219,7 @@ input[type='submit']{
 
 }
 
-/*** created to help in centering the content */
-.form-centered{
-    margin:auto;
-    display: flex;
-    flex-direction: column;
-}
+
 
 .form_wrapper header{ /* centering all the content */
     margin: auto;
@@ -323,53 +371,6 @@ form.sign_in_form input[type='text'], input[type='password']{
 }
 
 
-/*############### ADMIN PANEL **############################*/
-
-/* align elements row wise **/
-.admin_wrapper{
-    display: flex;
-    flex-direction: row;
-}
-
-nav.admin_sidebar{
-    background-color: #2ecc71;
-    height: 100%;
-}
-
-nav.admin_sidebar ul{
-    list-style-type: none;
-}
-
-nav.admin_sidebar ul li{
-    border-bottom: 1px solid silver;
-}
-
-nav.admin_sidebar ul a{
-    display: block;
-    text-decoration: none;
-    padding: 15px;
-    line-height: 35px;
-    background-color: dimgray;
-    color: #2c3e50;
-
-}
-
-nav.admin_sidebar ul a:hover{
-    background-color: silver;
-    color: black;
-}
-
-/*####### TOGGLE ICON ****/
-.toggle-sidebar-button span{
-    display: block;
-    background-color: black;
-    width: 30px;
-    height:5px;
-    margin: 3px;
-}
-
-
-
 /* ################### PROFILE PAGE ******************************************/
 
 /* wraps all the content on the profile page | profile_top and profile_bottom*/
@@ -387,6 +388,14 @@ nav.admin_sidebar ul a:hover{
     justify-content: space-between;
 }
 
+@media (max-width: 768px) {
+    .profile_top{
+        display: flex;
+    flex-direction:column;
+    }
+}
+
+
 /* wraps the user profile_picture */
 .profile_pic{
     flex-basis: 10%;
@@ -403,6 +412,11 @@ nav.admin_sidebar ul a:hover{
     display: flex;
     padding: 5px;
     margin: 5px;
+}
+@media (max-width: 768px) {
+    .username_edit_profile{
+        display: block;
+    }
 }
 
 .username_edit_profile h2{
@@ -450,6 +464,10 @@ nav.admin_sidebar ul a:hover{
     color: #000;
 }
 
+.user_bio{
+    padding: 5px;
+    margin: 5px;
+}
 
 /* profile_bottom | list of rides offered and given */
 .profile_bottom{
@@ -461,6 +479,7 @@ nav.admin_sidebar ul a:hover{
     color: #dddddd;
 }
 
+/* wraps ride information */
 .ride_template{
     background-color: #2c3e50;
     width:auto;
@@ -471,6 +490,12 @@ nav.admin_sidebar ul a:hover{
     padding: 15px;
     margin: 15px;
 }
+@media (max-width: 768px) {
+    .ride_template{
+        margin:20px 30px;
+    }
+}
+
 .ride_template header{
     text-align: center;
     padding: 5px;
@@ -526,26 +551,6 @@ form.edit_profile_form{
     flex-direction: column;
 }
 
-/* wraps the label and input */
-form .form-group{
-    display: flex;
-    flex-direction: row;
-    //background-color: #34495e;
-    padding: 5px;
-}
-
-.form-group label{
-    width:10%;
-    margin: 5px 5px 5px 0;
-}
-
-.form-group input, textarea, select{
-    width:90%;
-    margin: 5px 0;
-
-
-
-}
 
 /*** Edit profile page a MAX-WIDTH : 768PX*/
 @media (max-width: 768px) {
@@ -553,12 +558,162 @@ form .form-group{
         display: flex;
         flex-direction: column;
     }
+}
 
-    form .form-group {
+
+
+/*######### RIDE_DETAIL.HTML *******************/
+
+/* ride_wrapper | ride_detail_header && ride_detail_content */
+.ride_wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.ride_detail_header{
+    background-color: #2ecc71;
+    padding: 50px 100px;
+    color: white;
+}
+
+/* ## wraps table and article.action_area */
+.ride_detail_content{
+    margin: auto;
+    padding: 30px;
+    display: flex;
+    justify-content:space-between;
+}
+
+
+
+/* EDIT_TABLE*/
+table{
+    border: none;
+    margin-right: 30px;
+}
+
+ /*## article */
+article.action_area{
+
+}
+
+article.action_area ul{
+    list-style-type: none;
+}
+
+article.action_area ul li{
+    display: inline;
+    padding: 5px;
+    margin: 5px;
+
+}
+
+article h2{
+    margin: 0 0 20px 0;
+}
+article .request{
+    background-color: #238571;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #dddddd;
+}
+article .accepted{
+    background-color: #2ecc71;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #dddddd;
+}
+
+article .ignore{
+    background-color: peru;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #dddddd;
+}
+
+/* at max-width : 768px */
+@media (max-width: 768px) {
+    .ride_detail_content{
         display: flex;
-        flex-direction: column;
+        flex-direction:column;
+    }
+
+    table{
+        width:90%;
+        margin: 20px 5%;
     }
 }
+/*#######3 Accepted ride */
+
+
+/*####&&&&&&&&&&&&&&&&&& CREATE_RIDE.HTML **************************----------------#################################/
+
+/* create_ride_wrapper | page_header && create_ride_form_wrapper */
+.create_ride_wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.create_ride_form{
+    padding: 30px;
+}
+
+
+
+@media (min-width: 768px) {
+    .create_ride_form{
+        width:70%;
+        margin:20px 15%;
+    }
+
+    .create_ride_form label{
+        width:20%;
+
+    }
+
+    .create_ride_form input, select, textarea{
+        width: 60%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
