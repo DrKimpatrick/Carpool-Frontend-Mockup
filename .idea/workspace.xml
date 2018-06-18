@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90d6a05a-1c63-49b5-9691-d6b02a0bac41" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/accepted_ride.html" afterPath="$PROJECT_DIR$/UI/accepted_ride.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/available_ride_offers.html" afterPath="$PROJECT_DIR$/UI/available_ride_offers.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/create_ride.html" afterPath="$PROJECT_DIR$/UI/create_ride.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/edit_user_profile.html" afterPath="$PROJECT_DIR$/UI/edit_user_profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/index.html" afterPath="$PROJECT_DIR$/UI/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/profile_page.html" afterPath="$PROJECT_DIR$/UI/profile_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/request_ride.html" afterPath="$PROJECT_DIR$/UI/request_ride.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/signup.html" afterPath="$PROJECT_DIR$/UI/signup.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/static/css/main.css" afterPath="$PROJECT_DIR$/UI/static/css/main.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UI/reject_accept_request.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -60,15 +51,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="available_ride_offers.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="available_ride_offers.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/UI/available_ride_offers.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="228">
-                  <caret line="82" column="26" lean-forward="false" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
-                  <caret line="107" column="26" lean-forward="false" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
-                  <caret line="132" column="26" lean-forward="false" selection-start-line="132" selection-start-column="26" selection-end-line="132" selection-end-column="26" />
-                  <caret line="157" column="26" lean-forward="false" selection-start-line="157" selection-start-column="26" selection-end-line="157" selection-end-column="26" />
-                  <caret line="182" column="26" lean-forward="false" selection-start-line="182" selection-start-column="26" selection-end-line="182" selection-end-column="26" />
+                <state relative-caret-position="27">
+                  <caret line="32" column="18" lean-forward="false" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
                   <folding>
                     <element signature="n#div#0;n#a#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                     <element signature="n#table#0;n#div#0;n#a#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -82,6 +69,16 @@
                     <element signature="e#8569#8575#0" expanded="true" />
                     <element signature="e#8762#8768#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="reject_accept_request.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/UI/reject_accept_request.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="198">
+                  <caret line="9" column="5" lean-forward="false" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -177,6 +174,7 @@
         <option value="$PROJECT_DIR$/UI/request_ride.html" />
         <option value="$PROJECT_DIR$/UI/static/css/main.css" />
         <option value="$PROJECT_DIR$/UI/available_ride_offers.html" />
+        <option value="$PROJECT_DIR$/UI/reject_accept_request.html" />
       </list>
     </option>
   </component>
@@ -482,7 +480,7 @@
     <frame x="-8" y="-8" width="1382" height="784" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23012233" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23012233" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -933,12 +931,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/UI/available_ride_offers.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="82" column="26" lean-forward="false" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
-          <caret line="107" column="26" lean-forward="false" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
-          <caret line="132" column="26" lean-forward="false" selection-start-line="132" selection-start-column="26" selection-end-line="132" selection-end-column="26" />
-          <caret line="157" column="26" lean-forward="false" selection-start-line="157" selection-start-column="26" selection-end-line="157" selection-end-column="26" />
-          <caret line="182" column="26" lean-forward="false" selection-start-line="182" selection-start-column="26" selection-end-line="182" selection-end-column="26" />
+        <state relative-caret-position="27">
+          <caret line="32" column="18" lean-forward="false" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
           <folding>
             <element signature="n#div#0;n#a#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#table#0;n#div#0;n#a#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -952,6 +946,14 @@
             <element signature="e#8569#8575#0" expanded="true" />
             <element signature="e#8762#8768#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI/reject_accept_request.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="5" lean-forward="false" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
