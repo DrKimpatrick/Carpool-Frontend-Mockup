@@ -1,10 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Admin - Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="static/css/main.css" />
+    <script src="static/js/main.js"></script>
 </head>
 <body>
+    <div class="big_wrapper">
+        <div class="nav_wrapper">
+            <header><h2><a href="available_ride_offers.html">Ride-my-way</a></h2></header>
+            <nav>
+                <ul>
+                    <li><a href="available_ride_offers.html">Home</a></li>
+                    <li><a href="profile_page.html">dr.kimpatrick</a></li>
+                    <li><a href="index.html">Logout</a></li>
+                </ul>
+            </nav>
+            <div class="toggle-button" onclick="toggleSidebar()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="content_area">
+            <div class="ride_wrapper">
+                <div class="page_header">
+                    <h2>Take action</h2>
+                    <p>React to the available ride requests
+                    </p>
+                </div>
+                <div class="ride_detail_content driver_action_area">
+                    <table style="background-color: silver; border-radius: 4px;">
+                        <tr>
+                            <th>Driver (name)</th>
+                            <td>kimanje patrick</td>
+                        </tr>
+                        <tr>
+                            <th>Origin</th>
+                            <td>Kampala</td>
+                        </tr>
+                        <tr>
+                            <th>Destination</th>
+                            <td>Masaka</td>
+                        </tr>
+                        <tr>
+                            <th>Meetpoint</th>
+                            <td>Ndeeba</td>
+                        </tr>
+                        <tr>
+                            <th>Contribution</th>
+                            <td>4000/-</td>
+                        </tr>
+                        <tr>
+                            <th>NumFreeSpots</th>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <th>Time</th>
+                            <td>8:30 am</td>
+                        </tr>
+                        <tr>
+                            <th>Start date</th>
+                            <td>18th-06-2018</td>
+                        </tr>
+                        <tr>
+                            <th>Finish date</th>
+                            <td>22nd-06-2018</td>
+                        </tr>
+                    </table>
+                    <div class="action_area">
+                        <table>
+                            <tr>
+                                <th>No</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Action</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>kimpatrick</td>
+                                <td>dr.kimpatrick@gmail.com</td>
+                                <td>+(256) 750461002</td>
+                                <td>
+                                    <span><button class="success">Accept</button></span>
+                                    <span><button class="danger">Reject</button></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>kimpatrick</td>
+                                <td>dr.kimpatrick@gmail.com</td>
+                                <td>+(256) 750461002</td>
+                                <td>
+                                    <span><button class="success">Accept</button></span>
+                                    <span><button class="danger">Reject</button></span>
+                                </td>
+                            </tr>
+                        </table>
 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer_wrapper">
+            <div class="top_footer_section">
+                <div class="footer_column">
+                    <h1>About</h1>
+                    <p>
+                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.
+                    </p>
+                </div>
+                <div class="footer_column">
+                    <h1>About</h1>
+                    <p>
+                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.
+                    </p>
+                </div>
+                <div class="footer_column">
+                    <h1>About</h1>
+                    <p>
+                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.
+                    </p>
+                </div>
+
+
+            </div>
+            <div class="bottom_footer_section">
+                <p>&copy; dr.kimpatrick | Andela All rights reserved to </p>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
