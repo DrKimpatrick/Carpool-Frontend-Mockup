@@ -337,12 +337,15 @@ form.sign_in_form input[type='text'], input[type='password']{
     padding:50px 100px;
 
 }
+
 .footer_column{
     width:30%;
 }
 
 .footer_column h1{
     padding-bottom:20px;
+    font-size: large;
+    color: white;
 }
 
 .bottom_footer_section{
@@ -482,13 +485,19 @@ form.sign_in_form input[type='text'], input[type='password']{
 /* wraps ride information */
 .ride_template{
     background-color: #2c3e50;
+    color: silver;
     width:auto;
     height: auto;
     //border:1px solid #2c3e50;
     border-radius: 10px;
     display: inline-block;
-    padding: 15px;
+    padding: 30px;
     margin: 15px;
+    //cursor: pointer;
+}
+.ride_template:hover{
+    color: white;
+    background-color: #34495e;
 }
 @media (max-width: 768px) {
     .ride_template{
@@ -499,10 +508,13 @@ form.sign_in_form input[type='text'], input[type='password']{
 .ride_template header{
     text-align: center;
     padding: 5px;
+    //color: silver;
+    display: none;
 }
 
 .ride_template table, th, td {
     border: 0;
+    //color: silver;
 
 }
 .ride_template th{
@@ -568,12 +580,6 @@ form.edit_profile_form{
 .ride_wrapper{
     display: flex;
     flex-direction: column;
-}
-
-.ride_detail_header{
-    background-color: #2ecc71;
-    padding: 50px 100px;
-    color: white;
 }
 
 /* ## wraps table and article.action_area */
@@ -677,8 +683,16 @@ article .ignore{
 }
 
 
+/*************************** AVAILABLE RIDE OFFERS ********-------------------------------*/
 
+/* wraps ride_temp_available */
+.available_ride_offers_wrapper{
+    width:80%;
+    margin:50px 10%;
+    padding:30px;
+    //background-color: #238571;
 
+}
 
 
 
