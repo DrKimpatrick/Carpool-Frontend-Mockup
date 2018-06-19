@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Admin - Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="static/css/main.css" />
+    <script src="static/js/main.js"></script>
+</head>
+<body>
+    <div class="big_wrapper">
+        <div class="nav_wrapper">
+            <header><h2><a href="available_ride_offers.html">Ride-my-way</a></h2></header>
+            <nav>
+                <ul>
+                    <li><a href="available_ride_offers.html">Home</a></li>
+                    <li><a href="profile_page.html">dr.kimpatrick</a></li>
+                    <li><a href="index.html">Logout</a></li>
+                </ul>
+            </nav>
+            <div class="toggle-button" onclick="toggleSidebar()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="content_area">
+            <div class="create_ride_wrapper">
+                <div class="page_header">
+                    <h2>Create ride</h2>
+                    <p>You can create a ride offer</p>
+                </div>
+                <div class="create_ride_form_wrapper">
+                    <div class="form-centered">
+                        <form class="create_ride_form">
+                            <div class="form-group">
+                                <label for="origin">Origin</label>
+                                <input type="text" id="origin" placeholder="Type origin">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="destination">Destination</label>
+                                <input type="text" id="destination" placeholder="Type destination">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="meetpoint">Meetpoint</label>
+                                <input type="text" id="meetpoint" placeholder="Type meetpoint">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contribution">Contribution</label>
+                                <input type="number" id="contribution" placeholder="Amount">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="free_spots">Free spots</label>
+                                <input type="number" id="free_spots" placeholder="NumFreeSpots">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="start_date">Start date</label>
+                                <input type="date" id="start_date" placeholder="DD-MM-YYY">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="finish_date">Finish date</label>
+                                <input type="date" id="finish_date" placeholder="DD-MM-YYY">
+                            </div>
+                            <div class="form-group">
+                                <label for="terms">Terms and conditions</label>
+                                <textarea id="terms" placeholder="Terms and conditions ---"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label></label>
+                                <input type="Submit" id="submit" value="Create" class="success">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer_wrapper">
+            <div class="top_footer_section">
+                <div class="footer_column">
+                    <h1>About Us</h1>
+                    <p>We are a technology company that designs social products. </p><br>
+                    <p>In case of any concern please reach to us on facebook, twitter. We will be there to help</p>
+                </div>
+                <div class="footer_column">
+                    <h1>What we do</h1>
+                    <span>Android development</span><br>
+                    <span>Graphic designs</span><br>
+                    <span>Windows development</span><br>
+                    <span>Linux development</span>
+                </div>
+                <div class="footer_column">
+                    <h1>Contacts</h1>
+                    <span>Email &nbsp; dr.kimanje2patrick2@gmail.com</span><br>
+                    <span>Facebook &nbsp; kimpatrick</span><br>
+                    <span>Twitter &nbsp; dr.kimpatrick</span><br>
+                    <span>+(256) 750461002</span>
+                </div>
+
+
+            </div>
+            <div class="bottom_footer_section">
+                <p>&copy; dr.kimpatrick | Andela All rights reserved to </p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
