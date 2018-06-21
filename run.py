@@ -4,8 +4,9 @@ from api_classes import User
 app = Flask(__name__)
 
 
-@app.route('/users/signup', methods=['POST'])
+@app.route('/api/v1/users/signup', methods=['POST'])
 def create_user():
+
     name = request.json["name"]
     email = request.json['email']
     username = request.json['username']
@@ -13,13 +14,13 @@ def create_user():
     bio = request.json['bio']
     gender = request.json['gender']
     password = request.json['password']
-
     # check if username already exists
     # users_list = [{"name":"", "email":"", "username":"", "phone_number":"", "bio":"", "gender":"", "password":""}]
 
     global creating_user  # making it available every where
 
     if len(User.users_list) < 1:
+
         creating_user = User(name, email, username, phone_number, bio, gender, password)
         creating_user.signup()
         return jsonify({"Users": creating_user.users_list})
