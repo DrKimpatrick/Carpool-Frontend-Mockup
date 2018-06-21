@@ -13,14 +13,33 @@ def create_user():
     bio = request.json['bio']
     gender = request.json['gender']
     password = request.json['password']
+
+    # check if username already exists
+    # users_list = [{"name":"", "email":"", "username":"", "phone_number":"", "bio":"", "gender":"", "password":""}]
+
     global creating_user  # making it available every where
 
-    creating_user = User(name, email, username, phone_number, bio, gender, password)
-    creating_user.signup()
+    if len(User.users_list) < 1:
+        creating_user = User(name, email, username, phone_number, bio, gender, password)
+        creating_user.signup()
+        return jsonify({"Users": creating_user.users_list})
+    else:
+        count = 0
+        for dic in User.users_list:
+            count += 1
+            # username already exists
+            if dic['username'] == request.json['username']:
+                return jsonify({"message": "Username already taken, try another"})
 
-    # global creating_user
+            # username does not exist
+            else:
 
-    return jsonify({"Users": creating_user.users_list})
+                if len(User.users_list) == count:
+                    creating_user = User(name, email, username, phone_number, bio, gender, password)
+                    creating_user.signup()
+                    return jsonify({"Users": creating_user.users_list})
+                else:
+                    continue
 
 
 if __name__ == '__main__':
