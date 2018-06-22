@@ -43,6 +43,30 @@ def create_user():
                     continue
 
 
+@app.route('/api/v1/users/login', methods=['POST'])
+def login():
+    username = request.json['username']
+    password = request.json['password']
+    # kim = [{}, {}]
+    if len(User.users_list) < 1:
+        return jsonify({"message": "Your username or password is incorrect"})
+    else:
+        count = 0
+        for user in User.users_list:
+            count += 1
+
+            if user['username'] != username:
+                if len(User.users_list) != count:
+                    continue
+                else:
+                    return jsonify({"message": "Your username or password is incorrect"})
+            else:
+                if user['password'] == password:
+                    return jsonify({"message": "You are logged in"})
+                else:
+                    return jsonify({"message": "Your username or password is incorrect"})
+
+
 if __name__ == '__main__':
     app.run(debug=True)
 
