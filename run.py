@@ -67,6 +67,11 @@ def login():
                     return jsonify({"message": "Your username or password is incorrect"})
 
 
+@app.route('/api/v1/users', methods=['GET'])
+def list_of_users():
+    return jsonify({'users': User.users_list})
+
+
 if __name__ == '__main__':
     app.run(debug=True)
 
