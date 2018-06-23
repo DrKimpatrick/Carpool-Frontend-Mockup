@@ -32,7 +32,7 @@ class User(object):
         self.users_list.append(self.new_user)
 
     def offer_ride(self, origin, destination, meet_point, contribution, free_spots,
-                   start_date, finish_date, terms, ride_id):
+                   start_date, finish_date, terms, rideId):
         # rides_list = [{"username_1": [{"origin": "", "destination": ""}]}]
         ride_dict = {}
 
@@ -44,7 +44,7 @@ class User(object):
         ride_dict['start_date'] = start_date
         ride_dict['finish_date'] = finish_date
         ride_dict['terms'] = terms
-        ride_dict['ride_id'] = ride_id
+        ride_dict['rideId'] = rideId
 
         count = 0
         # rides_list = [{"username_1": [{"origin": "", "destination": ""}]}]
@@ -67,6 +67,20 @@ class User(object):
                     else:
                         dic[key].append(ride_dict)
                         return
+
+    @classmethod
+    def all_requests(cls):
+        if len(User.rides_request) < 1:
+            return "No rides requests available"
+        else:
+            return cls.rides_request
+
+    @classmethod
+    def all_users(cls):
+        if len(User.users_list) < 1:
+            return "No user accounts available"
+        else:
+            return cls.users_list
 
 
 

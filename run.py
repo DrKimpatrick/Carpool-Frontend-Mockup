@@ -6,6 +6,12 @@ app = Flask(__name__)
 
 @app.route('/api/v1/users/signup', methods=['POST'])
 def create_user():
+    if not request.json or "name" not in request.json or "email" not in request.json or \
+                    "username" not in request.json or "phone_number" not in request.json or "bio" not in request.json\
+            or "gender" not in request.json or "password" not in request.json:
+        # abort(400)
+        return jsonify({"error": "Bad request (400). The browser (or proxy) sent a "
+                                 "request that this server could not understand."})
 
     name = request.json["name"]
     email = request.json['email']
@@ -69,13 +75,18 @@ def login():
 
 @app.route('/api/v1/users', methods=['GET'])
 def list_of_users():
-    return jsonify({'users': User.users_list})
+    return jsonify({'users': User.all_users()})  # call the all_users() class method
 
 
 @app.route('/api/v1/rides', methods=['POST'])
 def create_ride():
-    if not request.json or "rideId" not in request.json or "terms" not in request.json or "finish_date" not in request.json or "start_date" not in request.json or "free_spots" not in request.json or "contribution" not in request.json or 'origin' not in request.json or 'destination' not in request.json or "meetpoint" not in request.json:
-        abort(404)
+    if not request.json or "rideId" not in request.json or "terms" not in request.json or "finish_date" \
+            not in request.json or "start_date" not in request.json or "free_spots" not in request.json \
+            or "contribution" not in request.json or 'origin' not in request.json or 'destination' \
+            not in request.json or "meetpoint" not in request.json:
+        # abort(404)
+        return jsonify({"error": "Bad request (400). The browser (or proxy) sent a "
+                                 "request that this server could not understand."})
 
     # origin, destination, meetpoint, contribution, free_spots, start_date, finish_date, terms
     origin = request.json['origin']
@@ -88,8 +99,40 @@ def create_ride():
     terms = request.json['terms']
     rideId = request.json['rideId']
 
-    creating_user.offer_ride(origin, destination, meetpoint, contribution, free_spots, start_date,
-                             finish_date, terms, rideId)
+    # raise errors if rideId is integer
+
+    if not isinstance(rideId, int):
+        return jsonify({"error": "rideId should be integer"})
+
+    if not isinstance(terms, str):
+        return jsonify({"error": "terms should be string"})
+
+    if not isinstance(start_date, str):
+        return jsonify({"error": "Start date should be string"})
+
+    if not isinstance(finish_date, str):
+        return jsonify({"error": "Finish date should be string"})
+
+    if not isinstance(free_spots, int):
+        return jsonify({"error": "Free spots should be integer"})
+
+    if not isinstance(origin, str):
+        return jsonify({"error": "Origin should be string"})
+
+    if not isinstance(destination, str):
+        return jsonify({"error": "Destination should be string"})
+
+    if not isinstance(meetpoint, str):
+        return jsonify({"error": "Meetpoint should be string"})
+
+    if not isinstance(contribution, (int, float, complex)):
+        return jsonify({"error": "rideId should be integer"})
+
+    try:
+        creating_user.offer_ride(origin, destination, meetpoint, contribution, free_spots, start_date,
+                                 finish_date, terms, rideId)
+    except:
+        return jsonify({"error": "Create account to create a ride or login"})
 
     return jsonify({"rides": User.rides_list})
 
@@ -114,11 +157,21 @@ def available_ride():
 
 @app.route('/api/v1/rides/<rideId>', methods=['GET'])
 def get_single_ride(rideId):
+
+    # changing rideId from type str to type int
+    try:
+        rideId = int(rideId)
+    except:
+        return jsonify({"error": "rideId should be of type integer"})
+
+    # if not isinstance(rideId, int):
+        # return jsonify({"error": "rideId should be of type integer"})
     # rides_list = [{"username_1": [{"origin": "", "destination": ""}]},{"username_1": [{"origin": "", "destination
     # ": ""}]}]
+
     count = 0
     if len(User.rides_list) < 1:
-        return jsonify({"message": "It seems no ride offers available, try again later {}".format(len(User.rides_list))})
+        return jsonify({"message": "It seems no ride offers available, try again later"})
     else:
         for dic in User.rides_list:
             count += 1
@@ -138,8 +191,17 @@ def get_single_ride(rideId):
 
 # rides_requests = [{rideId: [{"username": ""}, {"username": ""}]}, {rideId: [{"username": ""}, {"username": ""}]}]
 # Let users make request to join a ride offer
-@app.route('/api/v1/rides/<rideId>/requests', methods=['POST', 'GET'])
+@app.route('/api/v1/rides/<rideId>/requests', methods=['POST'])
 def request_ride(rideId):
+
+        # changing rideId from type str to type int
+        try:
+            rideId = int(rideId)
+        except:
+            return jsonify({"error": "rideId should be of type integer"})
+
+        # if not isinstance(rideId, int):
+            # return jsonify({"error": "rideId should be of type integer"})
 
         if len(User.rides_list) < 1:
             return jsonify({"message": "No ride offers currently available"})
@@ -190,6 +252,12 @@ def request_ride(rideId):
                                     return jsonify({"No ride offer with rideId {}".format(rideId)})
                                 else:
                                     continue
+
+
+@app.route('/api/v1/rides/requests', methods=['GET'])
+def get_all_ride_requests():
+    # all_requests = User.all_requests()
+    return jsonify({"Ride requests": User.all_requests()})
 
 
 if __name__ == '__main__':
