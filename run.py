@@ -133,6 +133,65 @@ def get_single_ride(rideId):
                             continue
 
 
+# rides_list = [{"username_1": [{"origin": "", "destination": ""}]},{"username_1": [{"origin": "", "destination
+    # ": ""}]}]
+
+# rides_requests = [{rideId: [{"username": ""}, {"username": ""}]}, {rideId: [{"username": ""}, {"username": ""}]}]
+# Let users make request to join a ride offer
+@app.route('/api/v1/rides/<rideId>/requests', methods=['POST', 'GET'])
+def request_ride(rideId):
+
+        if len(User.rides_list) < 1:
+            return jsonify({"message": "No ride offers currently available"})
+        else:
+            if len(User.rides_request) < 1:
+                count = 0
+                for dic in User.rides_list:
+                    count += 1
+                    for key in dic:
+                        for ride in dic[key]:
+                            if int(ride['rideId']) == int(rideId):
+                                User.rides_request.append({rideId: [{"username": creating_user.username}]})
+                                return jsonify({"Ride requests": User.rides_request})
+                            else:
+                                if len(User.rides_list) == count:
+                                    return jsonify({"No ride offer with rideId {}".format(rideId)})
+                                else:
+                                    continue
+
+            else:
+                count = 0
+                for dic in User.rides_list:
+                    count += 1
+                    for key in dic:
+                        for ride in dic[key]:
+                            if int(ride['rideId']) == int(rideId):
+
+                                # User.rides_request.append({rideId: [{"username": creating_user.username}]})
+                                # rides_requests = [{rideId: [{"username": ""}, {"username": ""}]}, {rideId:
+                                #  [{"username": ""}, {"username": ""}]}]
+                                count_request = 0
+                                for dic_request in User.rides_request:
+                                    count_request += 1
+                                    for key_request in dic_request:
+                                        if int(key_request) == int(rideId):
+                                            dic_request[key_request].append({"username": creating_user.username})
+                                            return jsonify({"Ride requests": User.rides_request})
+                                        else:
+                                            if len(User.rides_request) == count_request:
+                                                User.rides_request.append(
+                                                    {rideId: [{"username": creating_user.username}]})
+                                                return jsonify({"Ride requests": User.rides_request})
+                                            else:
+                                                continue
+
+                            else:
+                                if len(User.rides_list) == count:
+                                    return jsonify({"No ride offer with rideId {}".format(rideId)})
+                                else:
+                                    continue
+
+
 if __name__ == '__main__':
     app.run(debug=True)
 
