@@ -31,6 +31,44 @@ class User(object):
         # now append the new dictionary to the User list
         self.users_list.append(self.new_user)
 
+    def offer_ride(self, origin, destination, meet_point, contribution, free_spots,
+                   start_date, finish_date, terms, ride_id):
+        # rides_list = [{"username_1": [{"origin": "", "destination": ""}]}]
+        ride_dict = {}
+
+        ride_dict['origin'] = origin
+        ride_dict['destination'] = destination
+        ride_dict['meet_point'] = meet_point
+        ride_dict['contribution'] = contribution
+        ride_dict['free_spots'] = free_spots
+        ride_dict['start_date'] = start_date
+        ride_dict['finish_date'] = finish_date
+        ride_dict['terms'] = terms
+        ride_dict['ride_id'] = ride_id
+
+        count = 0
+        # rides_list = [{"username_1": [{"origin": "", "destination": ""}]}]
+        if len(self.rides_list) < 1:
+            # if the rides_list is empty
+            self.rides_list.append({self.username: [ride_dict]})
+            return
+        else:
+            for dic in self.rides_list:
+                count += 1
+                for key in dic:
+                    if key != self.username:
+                        # if the rides_list is not empty and the current user does not have any ride offer
+                        if len(self.rides_list) == count:
+                            # dic[self.username] = [ride_dict]  # create a dictionary in a list
+                            self.rides_list.append({self.username: [ride_dict]})
+                            return
+                        else:
+                            continue
+                    else:
+                        dic[key].append(ride_dict)
+                        return
+
+
 
 
 
