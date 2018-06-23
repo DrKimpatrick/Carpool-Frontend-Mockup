@@ -6,7 +6,7 @@ class User(object):
     # rides_list = ["username": [{}, {}, {}], "username": [{}, {}, {}]]
     rides_list = []  # lists all available ride offers
 
-    request = []  # list of ride requests
+    rides_request = []  # list of ride requests
     accepted_request = []  # list of accepted requests (rides taken)
 
     def __init__(self, name, email, username, phone_number, bio, gender, password):

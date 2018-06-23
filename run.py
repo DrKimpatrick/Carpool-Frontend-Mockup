@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, abort
 from api_classes import User
 
 app = Flask(__name__)
@@ -71,6 +71,27 @@ def login():
 def list_of_users():
     return jsonify({'users': User.users_list})
 
+
+@app.route('/api/v1/rides', methods=['POST'])
+def create_ride():
+    if not request.json or "rideId" not in request.json or "terms" not in request.json or "finish_date" not in request.json or "start_date" not in request.json or "free_spots" not in request.json or "contribution" not in request.json or 'origin' not in request.json or 'destination' not in request.json or "meetpoint" not in request.json:
+        abort(404)
+
+    # origin, destination, meetpoint, contribution, free_spots, start_date, finish_date, terms
+    origin = request.json['origin']
+    destination = request.json['destination']
+    meetpoint = request.json['meetpoint']
+    contribution = request.json['contribution']
+    free_spots = request.json['free_spots']
+    start_date = request.json['start_date']
+    finish_date = request.json['finish_date']
+    terms = request.json['terms']
+    rideId = request.json['rideId']
+
+    creating_user.offer_ride(origin, destination, meetpoint, contribution, free_spots, start_date,
+                             finish_date, terms, rideId)
+
+    return jsonify({"rides": User.rides_list})
 
 if __name__ == '__main__':
     app.run(debug=True)
