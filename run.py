@@ -93,6 +93,25 @@ def create_ride():
 
     return jsonify({"rides": User.rides_list})
 
+
+@app.route('/api/v1/rides', methods=['GET'])
+def available_ride():
+    # rides_list = [{"username_1": [{"origin": "", "destination": ""}]},{"username_1": [{"origin": "", "destination
+    # ": ""}]}]
+    only_rides = []  # contains a dictionary of rides
+
+    if len(User.rides_list) > 0:
+        for dic in User.rides_list:
+            for key in dic:  # capture username (key)
+                for ride in dic[key]:  # loop through the value now
+                    only_rides.append(ride)
+
+        return jsonify({"Rides": only_rides})
+
+    else:
+        return jsonify({"message": "No ride offers available, if you have a car create one !"})
+
+
 if __name__ == '__main__':
     app.run(debug=True)
 
