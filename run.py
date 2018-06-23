@@ -112,6 +112,27 @@ def available_ride():
         return jsonify({"message": "No ride offers available, if you have a car create one !"})
 
 
+@app.route('/api/v1/rides/<rideId>', methods=['GET'])
+def get_single_ride(rideId):
+    # rides_list = [{"username_1": [{"origin": "", "destination": ""}]},{"username_1": [{"origin": "", "destination
+    # ": ""}]}]
+    count = 0
+    if len(User.rides_list) < 1:
+        return jsonify({"message": "It seems no ride offers available, try again later {}".format(len(User.rides_list))})
+    else:
+        for dic in User.rides_list:
+            count += 1
+            for key in dic:
+                for ride in dic[key]:
+                    if int(ride['rideId']) == int(rideId):
+                        return jsonify({"Ride": ride})
+                    else:
+                        if len(User.rides_list) == count:
+                            return jsonify({"message": "The ride offer with rideId {} does not exist".format(rideId)})
+                        else:
+                            continue
+
+
 if __name__ == '__main__':
     app.run(debug=True)
 
