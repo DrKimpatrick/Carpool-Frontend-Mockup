@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/DrKimpatrick/DrKimpatrick.github.io.svg?branch=master)](https://travis-ci.org/DrKimpatrick/DrKimpatrick.github.io)
+
+
+
 # DrKimpatrick.github.io
 
 BUILD A PRODUCT: Ride-My-Way 
