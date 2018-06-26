@@ -32,5 +32,22 @@ and agrees to all the conditions specified (price and general behavior).
    
  ## Acknowledgments
  Am grateful to the Andela group for giving me chance to building this app.
+ 
+ ## This appication is served by  
+ - git-pages [GitHub Pages](https://drkimpatrick.github.io/UI/index.html).
+ - Heroku [Heroku](https://safe-fjord-86755.herokuapp.com).
+   - API end points
+      - retrieve all users [Users](https://safe-fjord-86755.herokuapp.com//api/v1/users)
+      - retrieve all rides [Rides](https://safe-fjord-86755.herokuapp.com//api/v1/rides)
+      - retrieve a single ride [Single ride](https://safe-fjord-86755.herokuapp.com//api/v1/rides/<rideId>)
+      - Request for a  ride [Request for a ride](https://safe-fjord-86755.herokuapp.com//api/v1/rides/<rideId>/requests)
+      - Request for all ride requets [All ride requests](https://safe-fjord-86755.herokuapp.com//api/v1/rides/<rideId>/requests)
+      - post rides [Rides](https://safe-fjord-86755.herokuapp.com//api/v1/rides)
+      - post rides requets [Rides](https://safe-fjord-86755.herokuapp.com//api/v1/rides)
+      - Signup [Signup](https://safe-fjord-86755.herokuapp.com//api/v1/users/signup)
+      - Login [Login](https://safe-fjord-86755.herokuapp.com//api/v1/users/login)
+   
+   
+ 
 
-   https://drkimpatrick.github.io/UI/index.html
+   
