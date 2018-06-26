@@ -20,7 +20,7 @@ def create_user():
     bio = request.json['bio']
     gender = request.json['gender']
     password = request.json['password']
-    # check if username already exists
+    # check if userpip install coverallsname already exists
     # users_list = [{"name":"", "email":"", "username":"", "phone_number":"", "bio":"", "gender":"", "password":""}]
 
     global creating_user  # making it available every where
