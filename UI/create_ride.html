@@ -15,7 +15,7 @@
             <nav>
                 <ul>
                     <li><a href="available_ride_offers.html">Home</a></li>
-                    <li><a href="profile_page.html">dr.kimpatrick</a></li>
+                    <li><a href="profile_page_rides_given.html">dr.kimpatrick</a></li>
                     <li><a href="index.html">Logout</a></li>
                 </ul>
             </nav>
@@ -33,49 +33,51 @@
                 </div>
                 <div class="create_ride_form_wrapper">
                     <div class="form-centered">
-                        <form class="create_ride_form">
+                        <form class="create_ride_form" action="reject_accept_request.html">
                             <div class="form-group">
                                 <label for="origin">Origin</label>
-                                <input type="text" id="origin" placeholder="Type origin">
+                                <input type="text" id="origin" placeholder="Type origin" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="destination">Destination</label>
-                                <input type="text" id="destination" placeholder="Type destination">
+                                <input type="text" id="destination" placeholder="Type destination" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="meetpoint">Meetpoint</label>
-                                <input type="text" id="meetpoint" placeholder="Type meetpoint">
+                                <input type="text" id="meetpoint" placeholder="Type meetpoint" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="contribution">Contribution</label>
-                                <input type="number" id="contribution" placeholder="Amount">
+                                <input type="number" id="contribution" placeholder="Amount" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="free_spots">Free spots</label>
-                                <input type="number" id="free_spots" placeholder="NumFreeSpots">
+                                <input type="number" id="free_spots" placeholder="NumFreeSpots" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="start_date">Start date</label>
-                                <input type="date" id="start_date" placeholder="DD-MM-YYY">
+                                <input type="date" id="start_date" placeholder="DD-MM-YYY" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="finish_date">Finish date</label>
-                                <input type="date" id="finish_date" placeholder="DD-MM-YYY">
+                                <input type="date" id="finish_date" placeholder="DD-MM-YYY" required>
                             </div>
                             <div class="form-group">
                                 <label for="terms">Terms and conditions</label>
-                                <textarea id="terms" placeholder="Terms and conditions ---"></textarea>
+                                <textarea id="terms" placeholder="Terms and conditions ---" required></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label></label>
-                                <input type="Submit" id="submit" value="Create" class="success">
+                                <button class="success">Submit</button>
+                                <a href="profile_page_rides_taken.html" class="button default">Back</a>
+                                <!--<input type="Submit" id="submit" value="Submit" class="success">-->
                             </div>
                         </form>
                     </div>
