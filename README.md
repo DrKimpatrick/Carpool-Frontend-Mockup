@@ -28,10 +28,6 @@ and agrees to all the conditions specified (price and general behavior).
    
    - Install packages in the requirements.txt
    pip install -r requirements.txt 
-   
-   
- ## Acknowledgments
- Am grateful to the Andela group for giving me chance to building this app.
  
  ## This appication is served by  
  - git-pages [GitHub Pages](https://drkimpatrick.github.io/UI/index.html).
@@ -47,7 +43,8 @@ and agrees to all the conditions specified (price and general behavior).
       - Signup [Signup](https://safe-fjord-86755.herokuapp.com//api/v1/users/signup)
       - Login [Login](https://safe-fjord-86755.herokuapp.com//api/v1/users/login)
    
-   
+## Acknowledgments
+ Am grateful to the Andela group for giving me chance to building this app.   
  
 
    
