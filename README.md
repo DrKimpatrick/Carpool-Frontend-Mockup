@@ -17,4 +17,20 @@ his trip on the application in order to find passengers to share the ride with.
 A passenger is any person that doesn’t own a car and wants to join a driver in a trip he posted 
 and agrees to all the conditions specified (price and general behavior). 
 
+## Installing
+   - Download project
+   Clone the project to your local computer
+   
+   - Prepare the installation environment
+   pip install virtualenv or virtualenv name-it
+   name-it is the name of the virtualenv
+   cd name-it/scripts/activate | this activates the virtualenv
+   
+   - Install packages in the requirements.txt
+   pip install -r requirements.txt 
+   
+   
+ ## Acknowledgments
+ Am grateful to the Andela group for giving me chance to building this app.
+
    https://drkimpatrick.github.io/UI/index.html
