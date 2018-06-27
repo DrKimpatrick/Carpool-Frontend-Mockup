@@ -4,6 +4,7 @@ import sys
 import run
 
 BASE_URL = '/api/v1/'
+content_type = 'application/json'
 
 """
 class TestUser(unittest.TestCase):
@@ -96,6 +97,8 @@ class TestFlaskApi(unittest.TestCase):
         self.app = run.app.test_client()
         self.app.testing = True
 
+        # --------***** Creating users ********------------------
+
         # second user instance
         self.user_1 = {
             "name": "patrick",
@@ -128,20 +131,40 @@ class TestFlaskApi(unittest.TestCase):
             "password": "Kp15712Kp"
         }
 
+        # ---------------- Testing the user login --------------------
+
+        # This user exists
+        self.login_user_1 = {
+            "username": "kimpatrick",
+            "password": "Kp15712Kp"
+        }
+
+        # This user does not exist
+        self.login_user_404 = {
+            "username": "kimpatrick_404",
+            "password": "Kp15712Kp"
+        }
+
+        # Bad request 400 | wrong inputs (keys)
+        self.login_user_400 = {
+            "username_400": "kimpatrick_400",
+            "password": "Kp15712Kp"
+        }
+
     # Lets create only two users from the above data
     def test_create_user(self):
 
         # Creating a user instance, length is one
         response = self.app.post("{}users/signup".format(BASE_URL),
                                  data=json.dumps(self.user_1),
-                                 content_type='application/json')
+                                 content_type=content_type)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.json['Users']), 1)
 
         # Username is unique, therefore an error message is raised here
         response = self.app.post("{}users/signup".format(BASE_URL),
                                  data=json.dumps(self.user_1),
-                                 content_type='application/json')
+                                 content_type=content_type)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json,
                          {"message": "Username already taken, try another"}
@@ -153,28 +176,49 @@ class TestFlaskApi(unittest.TestCase):
         # Second user instance | all expected to work fine
         response_2 = self.app.post("{}users/signup".format(BASE_URL),
                                    data=json.dumps(self.user_2),
-                                   content_type='application/json')
+                                   content_type=content_type)
         self.assertEqual(response_2.status_code, 200)
         self.assertEqual(len(response_2.json['Users']), 2)  # length=2
 
         # Wrong and missing user fields | Should raise and error message
         response_3 = self.app.post("{}users/signup".format(BASE_URL),
                                    data=json.dumps(self.user_3),
-                                   content_type='application/json')
-        self.assertEqual(response_3.status_code, 200)
-        self.assertEqual(response_3.json['error'],
-                         "Bad request (400). The browser (or proxy) sent a "
-                         "request that this server could not understand."
-                         )
+                                   content_type=content_type)
+        self.assertEqual(response_3.status_code, 400)
 
-    # Remember only two users were added to the users_list
+    # -- Remember only two users were added to the users_list ---
     def test_get_all_users(self):
         response = self.app.get('{}users'.format(BASE_URL))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.json['Users']), 2)
 
     def test_login(self):
-        pass
+
+        # ---- for bad request ---------------------------
+        response_400 = self.app.post("{}users/login".format(BASE_URL),
+                                     data=json.dumps(self.login_user_400),
+                                     content_type=content_type)
+        self.assertEqual(response_400.status_code, 400)
+
+        # ---- Right data ---------------------------------
+        response_1 = self.app.post("{}users/login".format(BASE_URL),
+                                   data=json.dumps(self.login_user_1),
+                                   content_type=content_type)
+
+        self.assertEqual(response_1.status_code, 200)
+        self.assertEqual(response_1.json, {"message": "You are logged in"})
+        self.assertEqual(response_1.json['message'], "You are logged in")
+
+        # ---- Right data but username does not exist ---------
+        response_404 = self.app.post("{}users/login".format(BASE_URL),
+                                     data=json.dumps(self.login_user_404),
+                                     content_type=content_type)
+
+        self.assertEqual(response_404.json,
+                         {"message": "Your username or password is incorrect"})
+
+        self.assertEqual(response_404.json['message'],
+                         "Your username or password is incorrect")
 
     def test_create_ride(self):
         ride = {"origin": "kampala",

@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, abort
 from api_classes import User
 
 app = Flask(__name__)
@@ -15,12 +15,7 @@ def create_user():
             "gender" not in request.json or
             "password" not in request.json):
 
-        return jsonify(
-            {
-                "error": "Bad request (400). The browser (or proxy) sent a "
-                         "request that this server could not understand."
-            }
-        )
+        abort(400)
 
     name = request.json["name"]
     email = request.json['email']
@@ -86,6 +81,12 @@ def list_of_users():
 
 @app.route('/api/v1/users/login', methods=['POST'])
 def login():
+    if (not request.json or
+            "username" not in request.json or
+            "password" not in request.json):
+
+            abort(400)
+
     username = request.json['username']
     password = request.json['password']
     # kim = [{}, {}]
