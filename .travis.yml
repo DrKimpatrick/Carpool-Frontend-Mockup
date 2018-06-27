@@ -1,30 +1,9 @@
 language: python
 python:
-    - "2.7"
-    - "3.6.3"
-before_install:
-    - pip install pytest pytest-cov
-    - pip install flask
+   "3.6.3"
+install:
+    "pip install -r requirements.txt"
 script:
-    - py.test
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    - nosetests --with-coverage --cover-erase --cover-package=app/ && coverage report
+after_success:
+- "coveralls"
