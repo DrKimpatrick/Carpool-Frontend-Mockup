@@ -1,14 +1,9 @@
 class User(object):
-    # users_list = [
-    # {"name":"", "email":"", "username":"", "phone_number":"",
-    #  "bio":"", "gender":"", "password":""},
-    #  {"name":"", "email":"", "username":"", "phone_number":"",
-    # "bio":"", "gender":"", "password":""}]
-
-    users_list = []  # list of all application users
+    # users_list = [{"name":"", "email":"", "username":""]
+    users_list = []
 
     # rides_list = ["username": [{}, {}, {}], "username": [{}, {}, {}]]
-    rides_list = []  # lists all available ride offers
+    rides_list = []
 
     rides_request = []  # list of ride requests
     accepted_request = []  # list of accepted requests (rides taken)
@@ -54,7 +49,7 @@ class User(object):
             start_date,
             finish_date,
             terms,
-            rideId
+            ride_id
     ):
         # rides_list = [{"username_1": [{"origin": "", "destination": ""}]}]
         ride_dict = {}
@@ -67,7 +62,7 @@ class User(object):
         ride_dict['start_date'] = start_date
         ride_dict['finish_date'] = finish_date
         ride_dict['terms'] = terms
-        ride_dict['rideId'] = rideId
+        ride_dict['ride_id'] = ride_id
 
         count = 0
         # rides_list = [{"username_1": [{"origin": "", "destination": ""}]}]

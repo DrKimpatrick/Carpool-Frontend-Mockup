@@ -1,10 +1,11 @@
 import unittest
 import json
+import sys
 import run
 
 BASE_URL = '/api/v1/'
 
-
+"""
 class TestUser(unittest.TestCase):
     def test_data_structures(self):
         self.assertIsInstance(run.User.rides_list, list)
@@ -76,6 +77,7 @@ class TestUser(unittest.TestCase):
 
                     # check some dictionary values
                     self.assertEqual(ride['origin'], "kampala")
+"""
 
 
 class TestFlaskApi(unittest.TestCase):
@@ -83,35 +85,116 @@ class TestFlaskApi(unittest.TestCase):
         self.app = run.app.test_client()
         self.app.testing = True
 
+        # second user instance
+        self.user_1 = {
+            "name": "patrick",
+            "email": "dr.kimpatrick@gmail.com",
+            "username": "kimpatrick",
+            "phone_number": "078127364",
+            "bio": "This is patrick, mum's last born",
+            "gender": "Male",
+            "password": "Kp15712Kp"
+        }
+
+        # second user instance
+        self.user_2 = {
+            "name": "patrick",
+            "email": "dr.kimpatrick@gmail.com",
+            "username": "kimpatrick_2",
+            "phone_number": "078127364",
+            "bio": "This is patrick, mum's last born",
+            "gender": "Male",
+            "password": "Kp15712Kp"
+        }
+
+        # wrong and missing parameters
+        self.user_3 = {
+            "name_3": "patrick",
+            "email": "dr.kimpatrick@gmail.com",
+            "username_3": "kimpatrick_3",
+            "bio": "This is patrick, mum's last born",
+            "gender_3": "Male",
+            "password": "Kp15712Kp"
+        }
+
     # Testing APIs
     # users_list = [{"name":"", "email":"", "username":"", "phone_number":"", "bio":"", "gender":"", "password":""},
     #  {"name":"", "email":"", "username":"", "phone_number":"", "bio":"", "gender":"", "password":""}]
     def test_get_all_users(self):
         response = self.app.get('{}users'.format(BASE_URL))
-        data = json.loads(response.get_data())
+        # data = json.loads(response.get_data())
+        # data = json.loads(response.get_data().decode(sys.getdefaultencoding()))
         self.assertEqual(response.status_code, 200)
-
-        # self.assertEqual(len(data['users']), 2)
+        # self.assertEqual(response.json, 2)
+        # self.assertEqual(data, 2)
 
     def test_create_user(self):
-        # response = self.app.get('{}users'.format(BASE_URL))
-        # data = json.loads(response.get_data())
-        # self.assertEqual(response.status_code, 200)
-        pass
+
+        # Creating a user instance, length is one
+        response = self.app.post("{}users/signup".format(BASE_URL),
+                                 data=json.dumps(self.user_1),
+                                 content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.json['Users']), 1)
+
+        # Username is unique, therefore an error message is raised here
+        response = self.app.post("{}users/signup".format(BASE_URL),
+                                 data=json.dumps(self.user_1),
+                                 content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json,
+                         {"message": "Username already taken, try another"}
+                         )
+        self.assertEqual(response.json['message'],
+                         "Username already taken, try another"
+                         )
+
+        # Second user instance | all expected to work fine
+        response_2 = self.app.post("{}users/signup".format(BASE_URL),
+                                   data=json.dumps(self.user_2),
+                                   content_type='application/json')
+        self.assertEqual(response_2.status_code, 200)
+        self.assertEqual(len(response_2.json['Users']), 2)  # length=2
+
+        # Wrong and missing user fields | Should raise and error message
+        response_3 = self.app.post("{}users/signup".format(BASE_URL),
+                                   data=json.dumps(self.user_3),
+                                   content_type='application/json')
+        self.assertEqual(response_3.status_code, 200)
+        self.assertEqual(response_3.json['error'],
+                         "Bad request (400). The browser (or proxy) sent a "
+                         "request that this server could not understand."
+                         )
+
+
+
 
     def test_login(self):
         pass
 
     def test_create_ride(self):
-        ride = {"originc": "kampala", "destination": "Masaka", "meetpoint": "Ndeeba", "contribution": 5000,
-         "free_spots": 4, "start_date": "21st/06/2018", "finish_date": "1st/06/2018", "terms": "terms", "rideId": 1000
-         }
+        ride = {"origin": "kampala",
+                "destination": "Masaka",
+                "meet_point": "Ndeeba",
+                "contribution": 5000,
+                "free_spots": 4,
+                "start_date": "21st/06/2018",
+                "finish_date": "1st/06/2018",
+                "terms": "terms", "ride_id": 1000}
+
         # item = {"name": "some_item"}
         response = self.app.post(BASE_URL,
                                  data=json.dumps(ride),
                                  content_type='application/json')
 
         self.assertEqual(response.status_code, 404)
+
+        response = self.app.post("{}rides".format(BASE_URL),
+                                 data=json.dumps(ride),
+                                 content_type='application/json')
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json, {"error": "Create account to create a ride or login"})
 
     def test_available_ride(self):
         pass
