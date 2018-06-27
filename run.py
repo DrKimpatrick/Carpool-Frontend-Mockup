@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, abort
+from flask import Flask, request, jsonify
 from api_classes import User
 
 app = Flask(__name__)
@@ -6,12 +6,21 @@ app = Flask(__name__)
 
 @app.route('/api/v1/users/signup', methods=['POST'])
 def create_user():
-    if not request.json or "name" not in request.json or "email" not in request.json or \
-                    "username" not in request.json or "phone_number" not in request.json or "bio" not in request.json\
-            or "gender" not in request.json or "password" not in request.json:
-        # abort(400)
-        return jsonify({"error": "Bad request (400). The browser (or proxy) sent a "
-                                 "request that this server could not understand."})
+    if (not request.json or
+            "name" not in request.json or
+            "email" not in request.json or
+            "username" not in request.json or
+            "phone_number" not in request.json or
+            "bio" not in request.json or
+            "gender" not in request.json or
+            "password" not in request.json):
+
+        return jsonify(
+            {
+                "error": "Bad request (400). The browser (or proxy) sent a "
+                         "request that this server could not understand."
+            }
+        )
 
     name = request.json["name"]
     email = request.json['email']
@@ -21,13 +30,22 @@ def create_user():
     gender = request.json['gender']
     password = request.json['password']
     # check if userpip install coverallsname already exists
-    # users_list = [{"name":"", "email":"", "username":"", "phone_number":"", "bio":"", "gender":"", "password":""}]
+    # users_list = [{"name":"", "email":"", "username":"",
+    # "phone_number":"", "bio":"", "gender":"", "password":""}]
 
     global creating_user  # making it available every where
 
     if len(User.users_list) < 1:
 
-        creating_user = User(name, email, username, phone_number, bio, gender, password)
+        creating_user = User(
+            name,
+            email,
+            username,
+            phone_number,
+            bio,
+            gender,
+            password
+        )
         creating_user.signup()
         return jsonify({"Users": creating_user.users_list})
     else:
@@ -36,13 +54,22 @@ def create_user():
             count += 1
             # username already exists
             if dic['username'] == request.json['username']:
-                return jsonify({"message": "Username already taken, try another"})
+                return jsonify(
+                    {"message": "Username already taken, try another"}
+                )
 
             # username does not exist
             else:
 
                 if len(User.users_list) == count:
-                    creating_user = User(name, email, username, phone_number, bio, gender, password)
+                    creating_user = User(
+                        name,
+                        email,
+                        username,
+                        phone_number,
+                        bio, gender,
+                        password
+                    )
                     creating_user.signup()
                     return jsonify({"Users": creating_user.users_list})
                 else:
@@ -65,30 +92,47 @@ def login():
                 if len(User.users_list) != count:
                     continue
                 else:
-                    return jsonify({"message": "Your username or password is incorrect"})
+                    return jsonify(
+                        {"message": "Your username or password is incorrect"}
+                    )
             else:
                 if user['password'] == password:
                     return jsonify({"message": "You are logged in"})
                 else:
-                    return jsonify({"message": "Your username or password is incorrect"})
+                    return jsonify(
+                        {"message": "Your username or password is incorrect"}
+                    )
 
 
 @app.route('/api/v1/users', methods=['GET'])
 def list_of_users():
-    return jsonify({'users': User.all_users()})  # call the all_users() class method
+    # call the all_users() class method
+    return jsonify({'users': User.all_users()})
 
 
 @app.route('/api/v1/rides', methods=['POST'])
 def create_ride():
-    if not request.json or "rideId" not in request.json or "terms" not in request.json or "finish_date" \
-            not in request.json or "start_date" not in request.json or "free_spots" not in request.json \
-            or "contribution" not in request.json or 'origin' not in request.json or 'destination' \
-            not in request.json or "meetpoint" not in request.json:
-        # abort(404)
-        return jsonify({"error": "Bad request (400). The browser (or proxy) sent a "
-                                 "request that this server could not understand."})
+    if (not request.json or
+            "rideId" not in request.json or
+            "terms" not in request.json or
+            "finish_date" not in request.json or
+            "start_date" not in request.json or
+            "free_spots" not in request.json or
+            "contribution" not in request.json or
+            'origin' not in request.json or
+            'destination' not in request.json or
+            "meetpoint" not in request.json):
 
-    # origin, destination, meetpoint, contribution, free_spots, start_date, finish_date, terms
+        return jsonify(
+            {
+                "error": "Bad request (400). The browser "
+                         "(or proxy) sent a request "
+                         "that this server could not understand."
+            }
+        )
+
+    # origin, destination, meetpoint, contribution, free_spots, start_date,
+    # finish_date, terms
     origin = request.json['origin']
     destination = request.json['destination']
     meetpoint = request.json['meetpoint']

@@ -1,6 +1,10 @@
 class User(object):
-    # users_list = [{"name":"", "email":"", "username":"", "phone_number":"", "bio":"", "gender":"", "password":""},
-    #  {"name":"", "email":"", "username":"", "phone_number":"", "bio":"", "gender":"", "password":""}]
+    # users_list = [
+    # {"name":"", "email":"", "username":"", "phone_number":"",
+    #  "bio":"", "gender":"", "password":""},
+    #  {"name":"", "email":"", "username":"", "phone_number":"",
+    # "bio":"", "gender":"", "password":""}]
+
     users_list = []  # list of all application users
 
     # rides_list = ["username": [{}, {}, {}], "username": [{}, {}, {}]]
@@ -9,7 +13,16 @@ class User(object):
     rides_request = []  # list of ride requests
     accepted_request = []  # list of accepted requests (rides taken)
 
-    def __init__(self, name, email, username, phone_number, bio, gender, password):
+    def __init__(
+            self,
+            name,
+            email,
+            username,
+            phone_number,
+            bio,
+            gender,
+            password
+    ):
         self.name = name
         self.username = username
         self.email = email
@@ -31,8 +44,18 @@ class User(object):
         # now append the new dictionary to the User list
         self.users_list.append(self.new_user)
 
-    def offer_ride(self, origin, destination, meet_point, contribution, free_spots,
-                   start_date, finish_date, terms, rideId):
+    def offer_ride(
+            self,
+            origin,
+            destination,
+            meet_point,
+            contribution,
+            free_spots,
+            start_date,
+            finish_date,
+            terms,
+            rideId
+    ):
         # rides_list = [{"username_1": [{"origin": "", "destination": ""}]}]
         ride_dict = {}
 
@@ -50,17 +73,23 @@ class User(object):
         # rides_list = [{"username_1": [{"origin": "", "destination": ""}]}]
         if len(self.rides_list) < 1:
             # if the rides_list is empty
-            self.rides_list.append({self.username: [ride_dict]})
+            self.rides_list.append(
+                {self.username: [ride_dict]}
+            )
             return
         else:
             for dic in self.rides_list:
                 count += 1
                 for key in dic:
                     if key != self.username:
-                        # if the rides_list is not empty and the current user does not have any ride offer
+                        # if the rides_list is not empty and the current user
+                        # does not have any ride offer
                         if len(self.rides_list) == count:
-                            # dic[self.username] = [ride_dict]  # create a dictionary in a list
-                            self.rides_list.append({self.username: [ride_dict]})
+                            # dic[self.username] = [ride_dict]  #
+                            # create a dictionary in a list
+                            self.rides_list.append(
+                                {self.username: [ride_dict]}
+                            )
                             return
                         else:
                             continue
@@ -81,35 +110,3 @@ class User(object):
             return "No user accounts available"
         else:
             return cls.users_list
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
