@@ -81,6 +81,17 @@ class TestUser(unittest.TestCase):
 
 
 class TestFlaskApi(unittest.TestCase):
+    """
+            ========== Revision Notes ===========
+            response.json = {"key": "value"}
+            if key = User and Value = [{}]
+            response.json['User'] = [{}]
+
+            The key depends on the returned json "key"
+            return jsonify("message": "some message")
+            return jsonify("error": "some message")
+            """
+
     def setUp(self):
         self.app = run.app.test_client()
         self.app.testing = True
@@ -117,17 +128,7 @@ class TestFlaskApi(unittest.TestCase):
             "password": "Kp15712Kp"
         }
 
-    # Testing APIs
-    # users_list = [{"name":"", "email":"", "username":"", "phone_number":"", "bio":"", "gender":"", "password":""},
-    #  {"name":"", "email":"", "username":"", "phone_number":"", "bio":"", "gender":"", "password":""}]
-    def test_get_all_users(self):
-        response = self.app.get('{}users'.format(BASE_URL))
-        # data = json.loads(response.get_data())
-        # data = json.loads(response.get_data().decode(sys.getdefaultencoding()))
-        self.assertEqual(response.status_code, 200)
-        # self.assertEqual(response.json, 2)
-        # self.assertEqual(data, 2)
-
+    # Lets create only two users from the above data
     def test_create_user(self):
 
         # Creating a user instance, length is one
@@ -166,8 +167,11 @@ class TestFlaskApi(unittest.TestCase):
                          "request that this server could not understand."
                          )
 
-
-
+    # Remember only two users were added to the users_list
+    def test_get_all_users(self):
+        response = self.app.get('{}users'.format(BASE_URL))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.json['Users']), 2)
 
     def test_login(self):
         pass

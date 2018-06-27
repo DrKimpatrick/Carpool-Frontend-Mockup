@@ -30,7 +30,6 @@ def create_user():
     gender = request.json['gender']
     password = request.json['password']
 
-    # check if userpip install coverallsname already exists
     # users_list = [{"name":"", "email":"", "username":"",
     # "phone_number":"", "bio":"", "gender":"", "password":""}]
 
@@ -79,6 +78,12 @@ def create_user():
                     continue
 
 
+@app.route('/api/v1/users', methods=['GET'])
+def list_of_users():
+    # call the all_users() class method
+    return jsonify({'Users': User.all_users()})
+
+
 @app.route('/api/v1/users/login', methods=['POST'])
 def login():
     username = request.json['username']
@@ -107,12 +112,6 @@ def login():
                     return jsonify(
                         {"message": "Your username or password is incorrect"}
                     )
-
-
-@app.route('/api/v1/users', methods=['GET'])
-def list_of_users():
-    # call the all_users() class method
-    return jsonify({'users': User.all_users()})
 
 
 @app.route('/api/v1/rides', methods=['POST'])
