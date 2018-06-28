@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify, abort, make_response
 from api_classes import User
+from helpers import get_users
+
 
 app = Flask(__name__)
 
@@ -18,7 +20,9 @@ def create_user():
             "gender" not in request.json or
             "password" not in request.json):
 
-        abort(400)
+        return jsonify(
+            {"error": "You have either missed out some info or used wrong keys"}
+        ), 400
 
     name = request.json["name"]
     email = request.json['email']
@@ -31,49 +35,23 @@ def create_user():
     # users_list = [{"name":"", "email":"", "username":"",
     # "phone_number":"", "bio":"", "gender":"", "password":""}]
 
-    global creating_user  # making it available every where
-
-    if len(User.users_list) < 1:
-
+    for user in User.users_list:
+        # username already exists
+        if user['username'] == request.json['username']:
+            return jsonify(
+                {"message": "Username already taken, try another"}
+            )
+    else:
         creating_user = User(
             name,
             email,
             username,
             phone_number,
-            bio,
-            gender,
+            bio, gender,
             password
         )
         creating_user.signup()
-        return jsonify(
-            {"Users": creating_user.users_list}
-        )
-    else:
-        count = 0
-        for dic in User.users_list:
-            count += 1
-            # username already exists
-            if dic['username'] == request.json['username']:
-                return jsonify(
-                    {"message": "Username already taken, try another"}
-                )
-
-            # username does not exist
-            else:
-
-                if len(User.users_list) == count:
-                    creating_user = User(
-                        name,
-                        email,
-                        username,
-                        phone_number,
-                        bio, gender,
-                        password
-                    )
-                    creating_user.signup()
-                    return jsonify({"Users": creating_user.users_list})
-                else:
-                    continue
+        return jsonify({"Users": creating_user.users_list})
 
 
 @app.route('/api/v1/users', methods=['GET'])
@@ -93,29 +71,13 @@ def login():
     username = request.json['username']
     password = request.json['password']
     # kim = [{}, {}]
-    if len(User.users_list) < 1:
+    for user in User.users_list:
+        if user['username'] == username and user['password'] == password:
+            return jsonify({"message": "You are logged in"})
+    else:
         return jsonify(
             {"message": "Your username or password is incorrect"}
         )
-    else:
-        count = 0
-        for user in User.users_list:
-            count += 1
-
-            if user['username'] != username:
-                if len(User.users_list) != count:
-                    continue
-                else:
-                    return jsonify(
-                        {"message": "Your username or password is incorrect"}
-                    )
-            else:
-                if user['password'] == password:
-                    return jsonify({"message": "You are logged in"})
-                else:
-                    return jsonify(
-                        {"message": "Your username or password is incorrect"}
-                    )
 
 
 @app.route('/api/v1/rides', methods=['POST'])

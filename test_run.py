@@ -98,7 +98,6 @@ class TestFlaskApi(unittest.TestCase):
         self.app.testing = True
         self.user_object = run.User
 
-
         # --------***** Creating users ********------------------
 
         # second user instance
@@ -223,6 +222,7 @@ class TestFlaskApi(unittest.TestCase):
                                    data=json.dumps(self.user_3),
                                    content_type=content_type)
         self.assertEqual(response_3.status_code, 400)
+        self.assertEqual(response_3.json, {"error": "You have either missed out some info or used wrong keys"})
 
     # -- Remember only two users were added to the users_list ---
     def test_get_all_users(self):
