@@ -1,9 +1,12 @@
-from flask import Flask, request, jsonify, abort
+from flask import Flask, request, jsonify, abort, make_response
 from api_classes import User
 
 app = Flask(__name__)
 
+# global creating_user  # making it available every where
 
+
+# users_list = [{"name":"", "email":"", "username":""] etc
 @app.route('/api/v1/users/signup', methods=['POST'])
 def create_user():
     if (not request.json or
@@ -128,13 +131,7 @@ def create_ride():
             'destination' not in request.json or
             "meet_point" not in request.json):
 
-        return jsonify(
-            {
-                "error": "Bad request (400). The browser "
-                         "(or proxy) sent a request "
-                         "that this server could not understand."
-            }
-        )
+        abort(400)
 
     # origin, destination, meet_point, contribution, free_spots, start_date,
     # finish_date, terms
@@ -188,17 +185,20 @@ def create_ride():
             finish_date,
             terms, ride_id
         )
-    except:
-        return jsonify(
-            {"error": "Create account to create a ride or login"}
-        )
+    except Exception as e:
+        # An error occured, therefore return a string message containing the error
+        response = {
+            'message': str(e)
+        }
 
-    return jsonify({"rides": User.rides_list})
+        return make_response(jsonify(response)), 401
+
+    return jsonify({"Rides": User.rides_list[-1]})
 
 
 @app.route('/api/v1/rides', methods=['GET'])
 def available_ride():
-    # rides_list = [{"username_1": [{"origin": "", "destination": ""}]},
+    # rides_list = [{"username_1": [{"origin": "", "destination": ""}, {"origin": "", "destination": ""}]},
     # {"username_1": [{"origin": "", "destination
     # ": ""}]}]
     only_rides = []  # contains a dictionary of rides
@@ -253,7 +253,8 @@ def get_single_ride(ride_id):
                     else:
                         if len(User.rides_list) == count:
                             return jsonify(
-                                {"message": "The ride offer with ride_id {} does not exist".format(ride_id)}
+                                {"message":
+                                 "The ride offer with ride_id {} does not exist".format(ride_id)}
                             )
                         else:
                             continue
@@ -290,7 +291,8 @@ def request_ride(ride_id):
                     for key in dic:
                         for ride in dic[key]:
                             if int(ride['ride_id']) == int(ride_id):
-                                User.rides_request.append({ride_id: [{"username": creating_user.username}]})
+                                User.rides_request.append(
+                                    {ride_id: [{"username": creating_user.username}]})
                                 return jsonify({"Ride requests": User.rides_request})
                             else:
                                 if len(User.rides_list) == count:

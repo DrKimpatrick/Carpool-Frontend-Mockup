@@ -1,7 +1,7 @@
 import unittest
 import json
-import sys
 import run
+
 
 BASE_URL = '/api/v1/'
 content_type = 'application/json'
@@ -96,6 +96,8 @@ class TestFlaskApi(unittest.TestCase):
     def setUp(self):
         self.app = run.app.test_client()
         self.app.testing = True
+        self.user_object = run.User
+
 
         # --------***** Creating users ********------------------
 
@@ -151,6 +153,38 @@ class TestFlaskApi(unittest.TestCase):
             "password": "Kp15712Kp"
         }
 
+        # ----------------- Create ride offers ---------------------
+
+        self.ride_1 = {"origin": "kampala",
+                       "destination": "Masaka",
+                       "meet_point": "Ndeeba",
+                       "contribution": 5000,
+                       "free_spots": 4,
+                       "start_date": "21st/06/2018",
+                       "finish_date": "1st/06/2018",
+                       "terms": "terms",
+                       "ride_id": 1000}
+
+        self.ride_2 = {"origin": "Busabala",
+                       "destination": "Kampala",
+                       "meet_point": "Ndeeba",
+                       "contribution": 6000,
+                       "free_spots": 5,
+                       "start_date": "21st/06/2018",
+                       "finish_date": "1st/06/2018",
+                       "terms": "terms",
+                       "ride_id": 2000}
+
+        self.ride_400 = {"origin_400": "Busabala",
+                         "destination_400": "Kampala",
+                         "meet_point": "Ndeeba",
+                         "contribution": 6000,
+                         "free_spots": 9,
+                         "start_date": "21st/06/2018",
+                         "finish_date": "1st/06/2018",
+                         "terms": "terms",
+                         "ride_id": 3000}
+
     # Lets create only two users from the above data
     def test_create_user(self):
 
@@ -190,7 +224,8 @@ class TestFlaskApi(unittest.TestCase):
     def test_get_all_users(self):
         response = self.app.get('{}users'.format(BASE_URL))
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(len(response.json['Users']), 2)
+        self.assertEqual(len(response.json['Users']), len(run.User.users_list))
+        self.assertEqual(response.json['Users'], run.User.users_list)
 
     def test_login(self):
 
@@ -221,28 +256,21 @@ class TestFlaskApi(unittest.TestCase):
                          "Your username or password is incorrect")
 
     def test_create_ride(self):
-        ride = {"origin": "kampala",
-                "destination": "Masaka",
-                "meet_point": "Ndeeba",
-                "contribution": 5000,
-                "free_spots": 4,
-                "start_date": "21st/06/2018",
-                "finish_date": "1st/06/2018",
-                "terms": "terms", "ride_id": 1000}
 
-        # item = {"name": "some_item"}
-        response = self.app.post(BASE_URL,
-                                 data=json.dumps(ride),
-                                 content_type='application/json')
+        # wrong data | missing data or keys
+        response_400 = self.app.post('{}rides'.format(BASE_URL),
+                                     data=json.dumps(self.ride_400),
+                                     content_type=content_type)
+        self.assertEqual(response_400.status_code, 400)
+        self.assertEqual(response_400.json, None)
 
-        self.assertEqual(response.status_code, 404)
+        # Right data
+        # response_1 = self.app.post('{}rides'.format(BASE_URL),
+                                   # data=json.dumps(self.ride_1),
+                                   # content_type=content_type)
 
-        response = self.app.post("{}rides".format(BASE_URL),
-                                 data=json.dumps(ride),
-                                 content_type='application/json')
-
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json, {"error": "Create account to create a ride or login"})
+        # self.assertEqual(response_1.status_code, 200)
+        # self.assertEqual(response_1.json, run.User.rides_list)
 
     def test_available_ride(self):
         pass
