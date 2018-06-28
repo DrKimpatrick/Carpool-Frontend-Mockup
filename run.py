@@ -42,6 +42,7 @@ def create_user():
                 {"message": "Username already taken, try another"}
             )
     else:
+        global creating_user
         creating_user = User(
             name,
             email,
@@ -136,6 +137,15 @@ def create_ride():
     if not isinstance(contribution, (int, float, complex)):
         return jsonify({"error": "ride_id should be integer"})
 
+    # ensure the ride_id is unique
+        # rides_list = [{"username_1": [{"origin": "", "destination": ""}, {"origin": "", "destination": ""}]},
+        # {"username_1": [{"origin": "", "destination
+        # ": ""}]}]
+    for users_rides in User.rides_list:
+        for username in users_rides:
+            for ride in users_rides[username]:
+                if ride['ride_id'] == ride_id:
+                    return jsonify({"message": "Ride with a same ride_id {} exists, choose another".format(ride_id)})
     try:
         creating_user.offer_ride(
             origin,
@@ -148,9 +158,8 @@ def create_ride():
             terms, ride_id
         )
     except Exception as e:
-        # An error occured, therefore return a string message containing the error
         response = {
-            'message': str(e)
+            'message': str(e) + ", try to sign up"
         }
 
         return make_response(jsonify(response)), 401
