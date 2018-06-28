@@ -11,7 +11,7 @@
 <body>
     <div class="big_wrapper">
         <div class="nav_wrapper">
-            <header><h2><a href="available_ride_offers.html">Ride-my-way</a></h2></header>
+            <header><h2><a href="#">Ride-my-way</a></h2></header>
             <nav>
                 <ul>
                     <li><a href="index.html">Signin</a></li>
@@ -28,14 +28,14 @@
             <div class="form_wrapper">
                 <div class="form-centered">
                     <header class=" form-elements"><h2>Sign up to Carpool</h2></header>
-                    <form class="sign_in_form form-elements">
+                    <form class="sign_in_form form-elements" action="index.html">
 
-                        <input type="text" id="username" placeholder="Type Username">
-                        <input type="text" id="email" placeholder="Type email">
-                        <input type="password" id="password" placeholder="Password">
-                        <input type="Submit" id="submit" value="Signup" class="success">
+                        <input type="text" id="username" placeholder="Type Username" required>
+                        <input type="email" id="email" placeholder="Type email" required>
+                        <input type="password" id="password" placeholder="Password" required>
+                        <input type="Submit" id="submit" value="Signup" class="button success">
                     </form>
-                    <footer class="form-elements">Already have an account ? <a href="index.html">Sign in</a></footer>
+                    <footer class="form-elements">Already have an account ? <a href="index.html" style="color: #2c3e50; font-weight: bolder">Sign in</a></footer>
                 </div>
             </div>
             <div class="about_wrapper">

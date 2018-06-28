@@ -10,6 +10,7 @@
 </head>
 <body>
     <div class="big_wrapper">
+
         <div class="nav_wrapper">
             <header><h2><a href="available_ride_offers.html">Ride-my-way</a></h2></header>
             <nav>
@@ -26,16 +27,40 @@
             </div>
         </div>
         <div class="content_area">
-            <div class="ride_wrapper">
-                <div class="page_header">
-                    <h2>Ride details</h2>
-                    <p>Request accepted for the ride
-                    </p>
+            <div class="page_header">
+                    <h2>User profile</h2>
+                    <p>You can edit your profile from here</p>
                 </div>
-                <div class="ride_detail_content">
-                    <table>
+            <div class="profile_wrapper">
+                <div class="profile_top">
+                    <div class="profile_pic"><img src="static/images/phillis.jpg" style="height: 150px;width: 150px; border-radius: 50%;"></div>
+                    <div class="user_summary_info">
+                        <div class="username_edit_profile">
+                            <h2>dr.kimpatrick</h2>
+                            <a href="edit_user_profile.html"><button>View profile</button></a>
+
+                        </div>
+                        <div class="rides_count">
+                            <ul>
+                                <li class="active_ride_status"> <a href="profile_page_rides_given.html"><span>2</span>&nbsp;Rides given</a></li>
+                                <li class="inactive_ride_status"><a href="profile_page_rides_taken.html"><span>4</span>&nbsp;Rides taken</a></li>
+                                <li class="create_ride_link"><a href="create_ride.html">Create <span>+</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="user_bio">
+                            <h4 style="margin: 5px">Email &nbsp;<small style="font-style: italic">dr.kimanje2patrick2@gmail.com</small></h4>
+                            <p>dr.Kimpatrick is my maiden name. Am a self -taught software programmer passionate about changing the world.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <hr style="margin: 30px 0; color: silver; opacity: 4">
+                <div class="profile_bottom">
+                    <a href="reject_accept_request.html"><div class="ride_template">
+                        <header><h2>Standard</h2></header>
+                        <table>
                         <tr>
-                            <th>Driver (name)</th>
+                            <th>Driver</th>
                             <td>kimanje patrick</td>
                         </tr>
                         <tr>
@@ -50,38 +75,41 @@
                             <th>Meetpoint</th>
                             <td>Ndeeba</td>
                         </tr>
-                        <tr>
-                            <th>Contribution</th>
-                            <td>4000/-</td>
-                        </tr>
-                        <tr>
-                            <th>NumFreeSpots</th>
-                            <td>10</td>
-                        </tr>
+
                         <tr>
                             <th>Start date</th>
                             <td>18th-06-2018</td>
                         </tr>
+                    </table>
+
+                    </div></a>
+                    <a href="reject_accept_request.html"><div class="ride_template">
+                        <header><h2>Standard</h2></header>
+                        <table>
                         <tr>
-                            <th>Finish date</th>
-                            <td>22nd-06-2018</td>
+                            <th>Driver</th>
+                            <td>kimanje patrick</td>
+                        </tr>
+                        <tr>
+                            <th>Origin</th>
+                            <td>Kampala</td>
+                        </tr>
+                        <tr>
+                            <th>Destination</th>
+                            <td>Masaka</td>
+                        </tr>
+                        <tr>
+                            <th>Meetpoint</th>
+                            <td>Ndeeba</td>
+                        </tr>
+
+                        <tr>
+                            <th>Start date</th>
+                            <td>18th-06-2018</td>
                         </tr>
                     </table>
-                    <article class="action_area">
+                    </div></a>
 
-                        <h2>Request for a ride</h2>
-                        <hr style="margin: 20px 0">
-                        <ul>
-                            <li class="accepted">Accepted</li>
-                            <li class="button default"><a href="profile_page_rides_taken.html">Back</a></li>
-                        </ul>
-                        <hr style="margin: 20px 0">
-                        <h2>Driver details</h2>
-                        <span>Name - (Kimanje patrick)</span>
-                        <span>Email - (dr.kimanje2patrick2@gmail.com)</span>
-                        <span>Age - (30)</span>
-                        <span><a href="#">View more</a></span>
-                    </article>
                 </div>
             </div>
         </div>

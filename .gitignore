@@ -1,2 +1,9 @@
 .idea
+<<<<<<< HEAD
 carpool
+=======
+carpool
+.vscode
+.pytest_cache/
+__pycache__/
+>>>>>>> master

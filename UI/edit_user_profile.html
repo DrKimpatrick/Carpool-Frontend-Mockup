@@ -15,7 +15,7 @@
             <nav>
                 <ul>
                     <li><a href="available_ride_offers.html">Home</a></li>
-                    <li><a href="profile_page.html">dr.kimpatrick</a></li>
+                    <li><a href="profile_page_rides_given.html">dr.kimpatrick</a></li>
                     <li><a href="index.html">Logout</a></li>
                 </ul>
             </nav>
@@ -32,38 +32,39 @@
                 </div>
             <div class="edit_profile_wrapper">
                 <div class="edit_pic_div"><img src="static/images/phillis.jpg" class="edit_pic"><button>Edit profile photo</button></div>
-                <form class="edit_profile_form">
+                <form class="edit_profile_form" action="profile_page_rides_given.html">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" id="name">
+                        <input type="text" id="name" required>
                     </div>
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input type="text" id="username">
+                        <input type="text" id="username" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" id="email">
+                        <input type="text" id="email" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
-                        <input type="number" id="phone">
+                        <input type="number" id="phone" required>
                     </div>
                     <div class="form-group">
                         <label for="bio">Bio</label>
-                        <textarea id="bio"></textarea>
+                        <textarea id="bio" required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="gender">Gender</label>
-                        <select id="gender">
+                        <select id="gender" required>
                             <option>-select-</option>
                             <option>Male</option>
                             <option>Female</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <button>Save</button>
-                        <button>Cancel</button>
+                        <label></label>
+                        <button class="success">Save</button>
+                        <a href="profile_page_rides_given.html" class="button warning">Cancel</a>
                     </div>
 
                 </form>
