@@ -4,7 +4,7 @@ python:
 install:
     "pip install -r requirements.txt"
 script:
-    - py.test
-    - nosetests --with-coverage --cover-erase --cover-package=run.py && coverage report
+    - nosetests --with-coverage --cover-erase --cover-package=DrKimpatrick.github.io
+/ && coverage report
 after_success:
 - "coveralls"
