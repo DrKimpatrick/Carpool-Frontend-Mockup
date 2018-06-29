@@ -8,3 +8,7 @@ before_install:
 script:
     - py.test
     
+after_success:
+- "coveralls"
+
+    
