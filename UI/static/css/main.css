@@ -253,7 +253,7 @@ form.sign_in_form{
 
 }
 
-form.sign_in_form input[type='text'], input[type='password']{
+form.sign_in_form input[type='text'], input[type='password'], input[type='email']{
     background: silver;
 }
 
