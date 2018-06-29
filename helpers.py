@@ -50,3 +50,31 @@ else:
                 )
 
 """
+
+"""count = 0
+    if len(User.rides_list) < 1:
+        return jsonify(
+            {"message": "It seems no ride offers available, try again later"}
+        )
+    else:
+        for dic in User.rides_list:
+            count += 1
+            for key in dic:
+                for ride in dic[key]:
+                    if int(ride['ride_id']) == int(ride_id):
+                        return jsonify(
+                            {"Ride": ride}
+                        )
+                    else:
+                        if len(User.rides_list) == count:
+                            return jsonify(
+                                {"message":
+                                 "The ride offer with ride_id {} does not exist".format(ride_id)}
+                            )
+                        else:
+                            continue
+
+
+# rides_list = [{"username_1": [{"origin": "", "destination": ""}]},
+                        # {"username_1": [{"origin": "", "destination
+    # ": ""}]}]"""

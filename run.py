@@ -196,44 +196,27 @@ def get_single_ride(ride_id):
     # changing ride_id from type str to type int
     try:
         ride_id = int(ride_id)
-    except:
+    except Exception as e:
         return jsonify(
-            {"error": "ride_id should be of type integer"}
+            {"error": str(e)+", ride_id should be of type integer"}
         )
 
-    # if not isinstance(ride_id, int):
-        # return jsonify({"error": "ride_id should be of type integer"})
     # rides_list = [{"username_1": [{"origin": "", "destination": ""}]},
-    # {"username_1": [{"origin": "", "destination
-    # ": ""}]}]
 
-    count = 0
-    if len(User.rides_list) < 1:
-        return jsonify(
-            {"message": "It seems no ride offers available, try again later"}
-        )
+    # Check for that ride_id
+    for users_rides in User.rides_list:
+        for username in users_rides:
+            for ride in users_rides[username]:
+                if int(ride['ride_id']) == int(ride_id):
+                    return jsonify(
+                        {"Ride": ride}
+                    )
     else:
-        for dic in User.rides_list:
-            count += 1
-            for key in dic:
-                for ride in dic[key]:
-                    if int(ride['ride_id']) == int(ride_id):
-                        return jsonify(
-                            {"Ride": ride}
-                        )
-                    else:
-                        if len(User.rides_list) == count:
-                            return jsonify(
-                                {"message":
-                                 "The ride offer with ride_id {} does not exist".format(ride_id)}
-                            )
-                        else:
-                            continue
+        return jsonify(
+            {"message":
+             "The ride offer with ride_id {} does not exist".format(ride_id)}
+        )
 
-
-# rides_list = [{"username_1": [{"origin": "", "destination": ""}]},
-                        # {"username_1": [{"origin": "", "destination
-    # ": ""}]}]
 
 # rides_requests = [{ride_id: [{"username": ""}, {"username": ""}]},
 # {ride_id: [{"username": ""}, {"username": ""}]}]
