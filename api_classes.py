@@ -8,16 +8,14 @@ class User(object):
     rides_request = []  # list of ride requests
     accepted_request = []  # list of accepted requests (rides taken)
 
-    def __init__(
-            self,
-            name,
-            email,
-            username,
-            phone_number,
-            bio,
-            gender,
-            password
-    ):
+    def __init__(self,
+                 name,
+                 email,
+                 username,
+                 phone_number,
+                 bio,
+                 gender,
+                 password):
         self.name = name
         self.username = username
         self.email = email
@@ -39,17 +37,16 @@ class User(object):
         # now append the new dictionary to the User list
         self.users_list.append(self.new_user)
 
-    def offer_ride(
-            self,
-            origin,
-            destination,
-            meet_point,
-            contribution,
-            free_spots,
-            start_date,
-            finish_date,
-            terms,
-            ride_id
+    def offer_ride(self,
+                   origin,
+                   destination,
+                   meet_point,
+                   contribution,
+                   free_spots,
+                   start_date,
+                   finish_date,
+                   terms,
+                   ride_id
     ):
         # rides_list = [{"username_1": [{"origin": "", "destination": ""}]}]
         ride_dict = {}
