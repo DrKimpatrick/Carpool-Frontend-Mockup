@@ -1,11 +1,14 @@
 language: python
 python:
-   "3.6.3"
-install:
-    "pip install -r requirements.txt"
+    - "3.6.3"
+before_install:
+    - pip install pytest pytest-cov
+    - pip install flask
+    - pip install -r requirements.txt
 script:
     - py.test
     - nosetests --with-coverage --cover-erase --cover-package=DrKimpatrick.github.io
-/ && coverage report
+    / && coverage report
+    
 after_success:
 - "coveralls"
