@@ -200,7 +200,7 @@ class TestFlaskApi(unittest.TestCase):
                                      data=json.dumps(self.ride_400),
                                      content_type=content_type)
         self.assertEqual(response_400.status_code, 400)
-        self.assertEqual(response_400.json, None)
+        self.assertEqual(response_400.json, {"error": "You have either missed out some info or used wrong keys"})
 
     def test_available_ride(self):
         pass
