@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/DrKimpatrick/DrKimpatrick.github.io.svg?branch=master)](https://travis-ci.org/DrKimpatrick/DrKimpatrick.github.io)
 
+[![Build Status](https://travis-ci.org/DrKimpatrick/DrKimpatrick.github.io.svg?branch=develop)](https://travis-ci.org/DrKimpatrick/DrKimpatrick.github.io)
+
 [![Coverage Status](https://coveralls.io/repos/github/DrKimpatrick/DrKimpatrick.github.io/badge.svg?branch=master)](https://coveralls.io/github/DrKimpatrick/DrKimpatrick.github.io?branch=master)
 
 # Ride-my-way (Carpool Andela Bootcamp 09 Project)
