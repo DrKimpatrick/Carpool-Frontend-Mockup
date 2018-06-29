@@ -220,7 +220,6 @@ def get_single_ride(ride_id):
 
 # rides_requests = [{ride_id: [{"username": ""}, {"username": ""}]},
 # {ride_id: [{"username": ""}, {"username": ""}]}]
-# Let users make request to join a ride offer
 @app.route('/api/v1/rides/<ride_id>/requests', methods=['POST'])
 def request_ride(ride_id):
 
@@ -232,59 +231,43 @@ def request_ride(ride_id):
                 {"error": "ride_id should be of type integer. {}".format(str(exc))}
             )
 
-        # if not isinstance(ride_id, int):
-            # return jsonify({"error": "ride_id should be of type integer"})
+        # Check for that ride_id
+        for users_rides in User.rides_list:
+            for username in users_rides:
+                for ride in users_rides[username]:
+                    if int(ride['ride_id']) == ride_id:
 
-        if len(User.rides_list) < 1:
-            return jsonify({"message": "No ride offers currently available"})
+                        """Loop over the rides_request. Create a dictionary
+                         with ride_id as key a list of dictionaries as the 
+                         value. If ride_id is present then append the requester's
+                          a dict of the requester """
+                        if username == creating_user.username:
+                            return jsonify({"message": "You can not make a request to your ride"})
+
+                        for ride_request in User.rides_request:
+                            for key_as_ride_id in ride_request:
+                                if int(key_as_ride_id) == ride_id:
+
+                                    # A user should send a request to a ride once
+                                    for user_as_dict in ride_request[key_as_ride_id]:
+                                        if user_as_dict['username'] == creating_user.username:
+                                            return jsonify(
+                                                {"message":
+                                                 "You already requested for this ride, just be patient"})
+                                    else:
+                                        ride_request[key_as_ride_id].append({"username": creating_user.username})
+                                        return jsonify(
+                                            {"message":
+                                             "Ride request successfully sent and is pending approval"})
+                        else:
+                            User.rides_request.append({ride_id: [{"username": creating_user.username}]})
+                            return jsonify({"message": "Ride request successfully sent and is pending approval"})
+
         else:
-            if len(User.rides_request) < 1:
-                count = 0
-                for dic in User.rides_list:
-                    count += 1
-                    for key in dic:
-                        for ride in dic[key]:
-                            if int(ride['ride_id']) == int(ride_id):
-                                User.rides_request.append(
-                                    {ride_id: [{"username": creating_user.username}]})
-                                return jsonify({"Ride requests": User.rides_request})
-                            else:
-                                if len(User.rides_list) == count:
-                                    return jsonify({"No ride offer with ride_id {}".format(ride_id)})
-                                else:
-                                    continue
-
-            else:
-                count = 0
-                for dic in User.rides_list:
-                    count += 1
-                    for key in dic:
-                        for ride in dic[key]:
-                            if int(ride['ride_id']) == int(ride_id):
-
-                                # User.rides_request.append({ride_id: [{"username": creating_user.username}]})
-                                # rides_requests = [{ride_id: [{"username": ""}, {"username": ""}]}, {ride_id:
-                                #  [{"username": ""}, {"username": ""}]}]
-                                count_request = 0
-                                for dic_request in User.rides_request:
-                                    count_request += 1
-                                    for key_request in dic_request:
-                                        if int(key_request) == int(ride_id):
-                                            dic_request[key_request].append({"username": creating_user.username})
-                                            return jsonify({"Ride requests": User.rides_request})
-                                        else:
-                                            if len(User.rides_request) == count_request:
-                                                User.rides_request.append(
-                                                    {ride_id: [{"username": creating_user.username}]})
-                                                return jsonify({"Ride requests": User.rides_request})
-                                            else:
-                                                continue
-
-                            else:
-                                if len(User.rides_list) == count:
-                                    return jsonify({"No ride offer with ride_id {}".format(ride_id)})
-                                else:
-                                    continue
+            return jsonify(
+                {"message":
+                 "The ride offer with ride_id {} does not exist".format(ride_id)}
+            )
 
 
 @app.route('/api/v1/rides/requests', methods=['GET'])
