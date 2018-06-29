@@ -7,8 +7,7 @@ before_install:
     - pip install -r requirements.txt
 script:
 - py.test
-- sbt clean coverage test
 
 after_success:
-- "sbt coveralls"
+- "coveralls"
 
