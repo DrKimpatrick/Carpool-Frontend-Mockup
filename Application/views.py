@@ -1,16 +1,13 @@
 from flask import Flask, request, jsonify, abort, make_response
-from api_classes import User
-from helpers import get_users
-
+from Application.models import User
 
 app = Flask(__name__)
 
-# global creating_user  # making it available every where
 
-
-# users_list = [{"name":"", "email":"", "username":""] etc
 @app.route('/api/v1/users/signup', methods=['POST'])
 def create_user():
+    """ Creating a user. users_list = [{"username":"", "name":""}]"""
+
     if (not request.json or
             "name" not in request.json or
             "email" not in request.json or
@@ -31,9 +28,6 @@ def create_user():
     bio = request.json['bio']
     gender = request.json['gender']
     password = request.json['password']
-
-    # users_list = [{"name":"", "email":"", "username":"",
-    # "phone_number":"", "bio":"", "gender":"", "password":""}]
 
     for user in User.users_list:
         # username already exists
@@ -57,12 +51,14 @@ def create_user():
 
 @app.route('/api/v1/users', methods=['GET'])
 def list_of_users():
-    # call the all_users() class method
+    """ Get all users, all_users() is defined in the User class"""
     return jsonify({'Users': User.all_users()})
 
 
 @app.route('/api/v1/users/login', methods=['POST'])
 def login():
+    """ The function confirms the presence of user. It does not login the user """
+
     if (not request.json or
             "username" not in request.json or
             "password" not in request.json):
@@ -71,7 +67,8 @@ def login():
 
     username = request.json['username']
     password = request.json['password']
-    # kim = [{}, {}]
+
+    # Check whether user exists
     for user in User.users_list:
         if user['username'] == username and user['password'] == password:
             return jsonify({"message": "You are logged in"})
@@ -83,6 +80,8 @@ def login():
 
 @app.route('/api/v1/rides', methods=['POST'])
 def create_ride():
+    """ Creating a ride offer """
+
     if (not request.json or
             "ride_id" not in request.json or
             "terms" not in request.json or
@@ -94,10 +93,10 @@ def create_ride():
             'destination' not in request.json or
             "meet_point" not in request.json):
 
-        abort(400)
+        return jsonify(
+            {"error": "You have either missed out some info or used wrong keys"}
+        ), 400
 
-    # origin, destination, meet_point, contribution, free_spots, start_date,
-    # finish_date, terms
     origin = request.json['origin']
     destination = request.json['destination']
     meet_point = request.json['meet_point']
@@ -108,7 +107,7 @@ def create_ride():
     terms = request.json['terms']
     ride_id = request.json['ride_id']
 
-    # raise errors if ride_id is integer
+    # Checking for errors
 
     if not isinstance(ride_id, int):
         return jsonify({"error": "ride_id should be integer"})
@@ -137,10 +136,7 @@ def create_ride():
     if not isinstance(contribution, (int, float, complex)):
         return jsonify({"error": "ride_id should be integer"})
 
-    # ensure the ride_id is unique
-        # rides_list = [{"username_1": [{"origin": "", "destination": ""}, {"origin": "", "destination": ""}]},
-        # {"username_1": [{"origin": "", "destination
-        # ": ""}]}]
+    # ensuring that ride_id is unique
     for users_rides in User.rides_list:
         for username in users_rides:
             for ride in users_rides[username]:
@@ -169,15 +165,15 @@ def create_ride():
 
 @app.route('/api/v1/rides', methods=['GET'])
 def available_ride():
-    # rides_list = [{"username_1": [{"origin": "", "destination": ""}, {"origin": "", "destination": ""}]},
-    # {"username_1": [{"origin": "", "destination
-    # ": ""}]}]
+    """ Retrieves all the available ride offers
+    rides_list = [{"username_1": [{"origin": "", "destination": ""} """
+
     only_rides = []  # contains a dictionary of rides
 
     if len(User.rides_list) > 0:
-        for dic in User.rides_list:
-            for key in dic:  # capture username (key)
-                for ride in dic[key]:  # loop through the value now
+        for dic_in_list in User.rides_list:
+            for username in dic_in_list:  # capture username (key)
+                for ride in dic_in_list[username]:  # loop through the value now
                     only_rides.append(ride)
 
         return jsonify(
@@ -192,6 +188,7 @@ def available_ride():
 
 @app.route('/api/v1/rides/<ride_id>', methods=['GET'])
 def get_single_ride(ride_id):
+    """ Retrieve a single ride by providing the ride_id """
 
     # changing ride_id from type str to type int
     try:
@@ -201,13 +198,11 @@ def get_single_ride(ride_id):
             {"error": str(e)+", ride_id should be of type integer"}
         )
 
-    # rides_list = [{"username_1": [{"origin": "", "destination": ""}]},
-
     # Check for that ride_id
     for users_rides in User.rides_list:
         for username in users_rides:
             for ride in users_rides[username]:
-                if int(ride['ride_id']) == int(ride_id):
+                if int(ride['ride_id']) == ride_id:
                     return jsonify(
                         {"Ride": ride}
                     )
@@ -218,12 +213,10 @@ def get_single_ride(ride_id):
         )
 
 
-# rides_requests = [{ride_id: [{"username": ""}, {"username": ""}]},
-# {ride_id: [{"username": ""}, {"username": ""}]}]
 @app.route('/api/v1/rides/<ride_id>/requests', methods=['POST'])
 def request_ride(ride_id):
+        """ Passenger can request for a ride by providing the ride_id"""
 
-        # changing ride_id from type str to type int
         try:
             ride_id = int(ride_id)
         except ValueError as exc:
@@ -237,10 +230,6 @@ def request_ride(ride_id):
                 for ride in users_rides[username]:
                     if int(ride['ride_id']) == ride_id:
 
-                        """Loop over the rides_request. Create a dictionary
-                         with ride_id as key a list of dictionaries as the 
-                         value. If ride_id is present then append the requester's
-                          a dict of the requester """
                         if username == creating_user.username:
                             return jsonify({"message": "You can not make a request to your ride"})
 
@@ -272,15 +261,11 @@ def request_ride(ride_id):
 
 @app.route('/api/v1/rides/requests', methods=['GET'])
 def get_all_ride_requests():
-    # all_requests = User.all_requests()
+    """ Returns all the ride requests """
+
     return jsonify(
         {"Ride requests": User.all_requests()}
     )
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
 
 
 

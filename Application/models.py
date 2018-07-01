@@ -1,9 +1,10 @@
 class User(object):
-    # users_list = [{"name":"", "email":"", "username":""]
-    users_list = []
+    """ Creates a user instance and links the user to all activities done
+    by that user e.g creating a ride offer and requesting for a ride """
 
-    # rides_list = ["username": [{}, {}, {}], "username": [{}, {}, {}]]
-    rides_list = []
+    users_list = []  # users_list = [{"name":"", "email":"", "username":""]
+
+    rides_list = []  # rides_list = ["username": [{}, {}, {}]]
 
     rides_request = []  # list of ride requests
     accepted_request = []  # list of accepted requests (rides taken)
@@ -26,6 +27,7 @@ class User(object):
         self.new_user = {}
 
     def signup(self):
+        """ Is called from the view (create_user) to create a user """
         self.new_user['name'] = self.name
         self.new_user['email'] = self.email
         self.new_user['username'] = self.username
@@ -37,6 +39,7 @@ class User(object):
         # now append the new dictionary to the User list
         self.users_list.append(self.new_user)
 
+    """ Is called from the view to create a ride offer """
     def offer_ride(self,
                    origin,
                    destination,
@@ -46,9 +49,9 @@ class User(object):
                    start_date,
                    finish_date,
                    terms,
-                   ride_id
-    ):
-        # rides_list = [{"username_1": [{"origin": "", "destination": ""}]}]
+                   ride_id):
+
+        # initialising an empty dict
         ride_dict = {}
 
         ride_dict['origin'] = origin
@@ -62,7 +65,6 @@ class User(object):
         ride_dict['ride_id'] = ride_id
 
         count = 0
-        # rides_list = [{"username_1": [{"origin": "", "destination": ""}]}]
         if len(self.rides_list) < 1:
             # if the rides_list is empty
             self.rides_list.append(
@@ -77,8 +79,6 @@ class User(object):
                         # if the rides_list is not empty and the current user
                         # does not have any ride offer
                         if len(self.rides_list) == count:
-                            # dic[self.username] = [ride_dict]  #
-                            # create a dictionary in a list
                             self.rides_list.append(
                                 {self.username: [ride_dict]}
                             )
@@ -91,6 +91,7 @@ class User(object):
 
     @classmethod
     def all_requests(cls):
+        """ Returns all ride requests available """
         if len(User.rides_request) < 1:
             return "No rides requests available"
         else:
@@ -98,6 +99,7 @@ class User(object):
 
     @classmethod
     def all_users(cls):
+        """ Returns all created users """
         if len(User.users_list) < 1:
             return "No user accounts available"
         else:
